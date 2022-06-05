@@ -6,7 +6,6 @@
     "lib": ["DOM", "ESNext"],
     "strict": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
     "skipLibCheck": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -20,8 +19,11 @@
       "vite-plugin-vue-layouts/client"
     ],
     "paths": {
-      "~/*": ["src/*"]
+      "@/*": ["src/*"]
     }
+  },
+  "vueCompilerOptions": {
+    "experimentalDisableTemplateSupport": true
   },
   "exclude": ["dist", "node_modules", "cypress"]
 }

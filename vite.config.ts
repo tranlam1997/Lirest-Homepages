@@ -24,7 +24,7 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '@/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
 
@@ -51,6 +51,7 @@ export default defineConfig({
         'vue/macros',
         '@vueuse/head',
         '@vueuse/core',
+        'pinia',
       ],
       dts: 'src/auto-imports.d.ts',
     }),
@@ -91,8 +92,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
       manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
+        name: 'Lirest',
+        short_name: 'Lirest',
         theme_color: '#ffffff',
         icons: [
           {

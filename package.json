@@ -1,12 +1,12 @@
 {
   "name": "lirest_fe",
-  "author": "Tran Lam",
-  "description": "Lirest UI",
-  "license": "MIT",
   "version": "0.1.0",
   "private": true,
-  "main": "src/main.ts",
   "packageManager": "pnpm@7.0.0",
+  "description": "Lirest UI",
+  "license": "MIT",
+  "author": "Tran Lam",
+  "main": "src/main.ts",
   "scripts": {
     "prepare": "husky install && husky add .husky/pre-commit \"lint-staged\"",
     "build": "vite-ssg build",
