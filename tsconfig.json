@@ -12,6 +12,7 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
     "types": [
       "vite/client",
       "vue/ref-macros",
@@ -22,8 +23,8 @@
       "@/*": ["src/*"]
     }
   },
-  "vueCompilerOptions": {
-    "experimentalDisableTemplateSupport": true
-  },
+  // "vueCompilerOptions": {
+  //   "experimentalDisableTemplateSupport": true
+  // },
   "exclude": ["dist", "node_modules", "cypress"]
 }
