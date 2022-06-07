@@ -5,6 +5,8 @@ button:
   home: Home
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
+  sign-in: Sign in
+  sign-up: Sign up
 intro:
   desc: Opinionated Vite Starter Template
   dynamic-route: Demo of dynamic route
@@ -12,3 +14,12 @@ intro:
   aka: Also known as
   whats-your-name: What's your name?
 not-found: Not found
+navigator:
+  sign-in: Sign in
+  sign-up: Sign up
+  home: Home
+  category: Category
+  author: Author
+  publisher: Publisher
+  vendor: Vendor
+  auction: Auction
