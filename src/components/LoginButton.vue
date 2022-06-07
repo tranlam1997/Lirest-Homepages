@@ -1,14 +1,12 @@
 <script setup lang="ts">
-
+const { t } = useI18n()
 </script>
 
 <template>
-  <div border="5 white-900" w-auto text-xl self-center>
-    <router-link to="" icon-btn text-white-200 border="2 yellow-200">
-      <div flex-row>
-        Sign in
-        <div i-bx:log-in self-center />
-      </div>
+  <div border="rounded-lg" w-auto text-l self-center btn>
+    <router-link to="" icon-btn text-white-200 flex-row>
+      <p>{{ t('navigator.sign-in') }}</p>
+      <div i-bx:log-in self-center text-xl />
     </router-link>
   </div>
 </template>
