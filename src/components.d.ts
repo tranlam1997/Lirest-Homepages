@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     RegisterButton: typeof import('./components/RegisterButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SlideShow: typeof import('./components/SlideShow.vue')['default']
   }
 }
 

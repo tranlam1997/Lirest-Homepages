@@ -11,3 +11,12 @@ intro:
   hi: Hi, {name}!
   whats-your-name: Tên bạn là gì?
 not-found: Không tìm thấy
+navigator:
+  sign-in: Đăng nhập
+  sign-up: Đăng ký
+  home: Trang chủ
+  category: Phân loại sách
+  author: Tác giả
+  publisher: Nhà xuất bản
+  vendor: Nhà bán lẻ
+  auction: Đấu giá
