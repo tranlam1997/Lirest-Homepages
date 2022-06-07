@@ -1,0 +1,12 @@
+@mixin addMarginToNavigatorChildren($value) {
+  @for $i from 0 through $value {
+    &:nth-child(#{$i}) {
+      @if $i ==1 {
+        margin-left: 0;
+      }
+      @else {
+        margin-left: #{$i * 10}rem;
+      }
+    }
+  }
+}
