@@ -1,3 +1,7 @@
 {
-  "extends": "@antfu"
+  "extends": "@antfu",
+  "rules": {
+    "no-console": "off",
+    "vue/require-v-for-key": "off",
+  }
 }
