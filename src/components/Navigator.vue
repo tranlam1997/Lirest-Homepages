@@ -3,7 +3,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <div border="1 red-800" sticky>
+  <div class="navi" border="1 red-800">
     <ul flex-col m-5>
       <li>
         <router-link to="" flex-row justify-center>
@@ -59,12 +59,17 @@ const { t } = useI18n()
 </template>
 
 <style scoped lang="scss">
+.navi {
+  flex-basis: 20%;
+  border: 5px solid orange;
+}
+
 li {
   list-style: none;
   display: block;
-  width: 15%;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+  text-align: left;
+  width: 70%;
+  margin: 0.5rem 0;
   padding: 0.25rem;
   border: 2px solid white;
 

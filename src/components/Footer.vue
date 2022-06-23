@@ -31,7 +31,7 @@ watch(selectedLocale, async (newSelectedLocale, oldSelectedLocale) => {
     <a icon-btn mx-2 flex-row :title="t('button.toggle_langs')">
       <div i-carbon-language mr-1 />
       <select v-model="selectedLocale" text-xs>
-        <option disabled value="">{{ convertToSpecificLanguage(selectedLocale) }}
+        <option disabled :value="selectedLocale">{{ convertToSpecificLanguage(selectedLocale) }}
         </option>
         <option v-for="(locale, index) in locales" :key="`${locale}-${index}`" :value="locale">
           {{ convertToSpecificLanguage(locale) }}
@@ -43,7 +43,7 @@ watch(selectedLocale, async (newSelectedLocale, oldSelectedLocale) => {
       <div i-carbon-dicom-overlay />
     </RouterLink>
 
-    <a icon-btn mx-2 flex-row rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank" title="GitHub">
+    <a icon-btn mx-2 flex-row rel="noreferrer" href="https://github.com/tranlam1997" target="_blank" title="GitHub">
       <div i-carbon-logo-github />
     </a>
   </nav>
