@@ -1,34 +1,62 @@
 <script lang="ts" setup>
 import type { Ref } from 'Vue'
-const images: Ref<string[]> = ref(['https://trontz.com/wp-content/uploads/2018/11/trontz-page-case-studies-trim-healthy-mama-image6-1390x380.jpg', 'https://prcdn.freetls.fastly.net/release_image/3092/507/3092-507-761a6f9987155361d2e89c1ce7db5822-1390x380.jpg?format=jpeg&auto=webp&quality=85%2C65&width=1950&height=1350&fit=bounds'])
-const styleSlide: Record<string, any> = reactive({})
-const styleSlide2: Record<string, any> = reactive({})
-const imageId = ref(0)
+const images: Ref<string[]> = ref(['https://csecenglishmadeeasy.com/wp-content/uploads/2017/11/library-wallpaper-50371-52062-hd-wallpapers.jpg', 'https://images.wallpaperscraft.com/image/single/books_shelf_collection_119979_1920x1080.jpg', 'https://images.wallpaperscraft.com/image/single/books_old_reading_124989_1920x1080.jpg'])
+const slideImages = [images.value[images.value.length - 1], ...images.value, images.value[0]]
+const diff = ref(0)
+const count = ref(1)
+const isActive = ref(false)
+const clicked = ref(false)
 
 const actionSlideBack = () => {
-  styleSlide.transition = 'transform 0.5s ease-in-out'
-  styleSlide.transform = 'translateX(-100%)'
-  styleSlide2.transition = 'transform 0.5s ease-in-out'
-  styleSlide2.transform = 'translateX(0)'
-  imageId.value--
+  if (clicked.value)
+    return
+  clicked.value = true
+  count.value -= 1
+  diff.value += 100
+  if (count.value === 0) {
+    count.value = slideImages.length - 2
+    setTimeout(() => {
+      isActive.value = true
+      diff.value = -100 * (slideImages.length - 3)
+    }, 300)
+  }
+  setTimeout(() => {
+    clicked.value = false
+  }, 300)
+  isActive.value = false
 }
+
 const actionSlideForward = () => {
-  styleSlide.transition = 'transform 0.5s ease-in-out'
-  styleSlide.transform = 'translateX(0)'
-  styleSlide2.transition = 'transform 0.5s ease-in-out'
-  styleSlide2.transform = 'translateX(100%)'
-  imageId.value++
+  if (clicked.value)
+    return
+  clicked.value = true
+  count.value += 1
+  diff.value -= 100
+  if (count.value === slideImages.length - 1) {
+    count.value = 1
+    setTimeout(() => {
+      isActive.value = true
+      diff.value = 0
+    }, 300)
+  }
+  setTimeout(() => {
+    clicked.value = false
+  }, 300)
+  isActive.value = false
+}
+
+const translateContainer = () => {
+  return `translateX(${-100 + diff.value}%)`
 }
 </script>
 
 <template>
   <div class="slide-container">
-    <div class="back" i-ant-design:arrow-left-outlined @click.prevent="actionSlideBack" />
-    <div class="forward" i-ant-design:arrow-right-outlined @click.prevent="actionSlideForward" />
-    <div class="image-container">
+    <div class="back" i-ant-design:arrow-left-outlined :disabled="clicked" @click.prevent="actionSlideBack" />
+    <div class="forward" i-ant-design:arrow-right-outlined :disabled="clicked" @click.prevent="actionSlideForward" />
+    <div class="image-container" :style="{ transform: translateContainer() }" :class="{ 'no-transition': isActive }">
       <img
-        v-for="(image, index) of images" :key="`${image}${index}`" :src="image"
-        :style="imageId === index ? styleSlide : styleSlide2"
+        v-for="(image, index) of slideImages" :key="`${image}${index}`" :src="image"
       >
     </div>
   </div>
@@ -36,30 +64,28 @@ const actionSlideForward = () => {
 
 <style lang="scss" scoped>
 .slide-container {
-  flex: 1;
+  flex-basis: 60%;
   position: relative;
-}
-
-.image-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
 }
 
-.image-container :not(img:first-child) {}
+.image-container {
+  transition: all 0.2s linear 0.1s;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+}
 
-.image-container img:first-child {
-  top: 0;
-  left: 0;
-  transform: translateX(0);
+.no-transition {
+  -webkit-transition: none !important;
+  transition: none !important;
 }
 
 img {
-  transform: translateX(-100%);
+  display:inline-block;
+  vertical-align: top;
   width: 100%;
-  object-fit: contain;
-  position: absolute;
+  height: 100%;
 }
 
 .back,

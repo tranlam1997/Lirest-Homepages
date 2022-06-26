@@ -4,7 +4,7 @@ const { t } = useI18n()
 
 <template>
   <div border="rounded-lg" w-auto text-l self-center btn>
-    <router-link to="" icon-btn text-white-200 flex-row>
+    <router-link to="" icon-btn flex-row>
       <p>{{ t('navigator.sign-in') }}</p>
       <div i-bx:log-in self-center text-xl />
     </router-link>

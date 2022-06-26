@@ -2,16 +2,16 @@
 </script>
 
 <template>
-  <div flex-col border="1 red-700" items-center>
+  <div flex-col items-center>
     <div
+      class="logo"
       bg-gradient-to-r hover:bg-gradient-to-l from-pink-500 to-yellow-500 flex-row w-full justify-around
-      border="2 gray-200"
     >
       <LoginButton />
       <LirestLogo />
       <RegisterButton />
     </div>
-    <nav w-full flex-row justify-between>
+    <nav w-full flex-row justify-items-start mt-4>
       <Navigator />
       <SlideShow />
     </nav>
@@ -21,6 +21,10 @@
 <style scoped>
 nav {
   height: 400px;
+}
+
+.logo {
+  background-image: linear-gradient(to right, #92ffc0, #002661);
 }
 </style>
 
