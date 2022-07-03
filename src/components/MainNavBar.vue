@@ -5,7 +5,7 @@ const { t } = useI18n()
 <template>
   <div class="navi">
     <ul flex-col m-5>
-      <li>
+      <li dark:border="1 white" border="2 black">
         <router-link to="" flex-row justify-center>
           <p flex-1>
             {{ t('navigator.home') }}
@@ -13,7 +13,7 @@ const { t } = useI18n()
           <div i-akar-icons:arrow-right />
         </router-link>
       </li>
-      <li>
+      <li dark:border="1 white" border="2 black">
         <router-link to="" flex-row justify-center>
           <p flex-1>
             {{ t('navigator.category') }}
@@ -21,7 +21,7 @@ const { t } = useI18n()
           <div i-akar-icons:arrow-right />
         </router-link>
       </li>
-      <li>
+      <li dark:border="1 white" border="2 black">
         <router-link to="" flex-row justify-center>
           <p flex-1>
             {{ t('navigator.author') }}
@@ -29,7 +29,7 @@ const { t } = useI18n()
           <div i-akar-icons:arrow-right />
         </router-link>
       </li>
-      <li>
+      <li dark:border="1 white" border="2 black">
         <router-link to="" flex-row justify-center>
           <p flex-1>
             {{ t('navigator.publisher') }}
@@ -37,7 +37,7 @@ const { t } = useI18n()
           <div i-akar-icons:arrow-right />
         </router-link>
       </li>
-      <li>
+      <li dark:border="1 white" border="2 black">
         <router-link to="" flex-row justify-center>
           <p flex-1>
             {{ t('navigator.vendor') }}
@@ -46,7 +46,7 @@ const { t } = useI18n()
           <div i-akar-icons:arrow-right />
         </router-link>
       </li>
-      <li>
+      <li dark:border="1 white" border="2 black">
         <router-link to="" flex-row justify-center>
           <p flex-1>
             {{ t('navigator.auction') }}
@@ -70,7 +70,7 @@ li {
   width: 70%;
   margin: 0.5rem 0;
   padding: 0.25rem;
-  border: 2px solid white;
+  border-radius: 0.25rem;
 
   &:hover {
     p~div {

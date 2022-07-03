@@ -3,12 +3,12 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <div border="rounded-lg" w-auto text-l self-center btn>
-    <RouterLink to="" icon-btn flex-row>
+  <RouterLink to="/register">
+    <div border="rounded-lg" w-auto text-l btn flex-row>
       <p>{{ t('navigator.sign-up') }}</p>
       <span ml-1><i class="fa-solid fa-user-plus" /></span>
-    </RouterLink>
-  </div>
+    </div>
+  </RouterLink>
 </template>
 
 <style scoped>

@@ -8,12 +8,18 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
-import { Shortcuts } from './src/custom-unocss/shortcuts'
 import { Rules } from './src/custom-unocss/rules'
 
 export default defineConfig({
   rules: Rules(),
-  shortcuts: Shortcuts(),
+  shortcuts: [
+    ['btn', 'px-4 py-2 rounded inline-block bg-black dark:bg-white text-gray-100 dark:text-gray-900 cursor-pointer hover:custom-bg-cadetblue hover:text-white disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
+    ['icon-btn', 'text-gray-900 dark:text-gray-100 inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-900'],
+    ['btn-submit', 'w-25 border-1 border-gray-900 dark:border-gray-100 rounded-lg  p-0.25 hover:custom-bg-cadetblue hover:text-white bg-dark dark:bg-white text-white dark:text-dark dark:disabled:bg-gray-300 disabled:bg-gray-600 disabled:opacity-50'],
+    ['input-format', 'border-1 border-gray-300 dark:border-gray-500 dark:bg-dark p-1 border-x-0 border-t-0 focus:outline-none'],
+    ['flex-row', 'flex flex-row'],
+    ['flex-col', 'flex flex-col'],
+  ],
   presets: [
     presetUno(),
     presetAttributify(),
