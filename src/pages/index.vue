@@ -14,8 +14,17 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <Login />
+  <nav w-full flex-row justify-items-start mt-4>
+    <Navigator />
+    <SlideShow />
+  </nav>
 </template>
+
+<style scoped lang="scss">
+  nav {
+  height: 400px;
+}
+</style>
 
 <route lang="yaml">
 meta:

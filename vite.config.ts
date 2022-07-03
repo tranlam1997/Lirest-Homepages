@@ -51,6 +51,7 @@ export default defineConfig({
         'vue/macros',
         '@vueuse/head',
         '@vueuse/core',
+        'vee-validate',
         'pinia',
       ],
       dts: 'src/auto-imports.d.ts',

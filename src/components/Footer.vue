@@ -20,17 +20,17 @@ watch(selectedLocale, async (newSelectedLocale, oldSelectedLocale) => {
 
 <template>
   <nav text-xl mt-6 flex-row justify-center>
-    <RouterLink flex-row icon-btn mx-2 to="/" :title="t('button.home')">
+    <RouterLink flex-row icon-btn mx-2 to="/" :title="t('button.home')" text-gray-900 dark:text-gray-100>
       <div i-dashicons:admin-home />
     </RouterLink>
 
-    <button class="icon-btn mx-2 !outline-none" flex-row :title="t('button.toggle_dark')" @click="toggleDark()">
+    <button class="icon-btn mx-2 !outline-none" flex-row :title="t('button.toggle_dark')" text-gray-900 dark:text-gray-100 @click="toggleDark()">
       <div i="carbon-sun dark:carbon-moon" />
     </button>
 
-    <a icon-btn mx-2 flex-row :title="t('button.toggle_langs')">
-      <div i-carbon-language mr-1 />
-      <select v-model="selectedLocale" text-xs>
+    <a mx-2 flex-row :title="t('button.toggle_langs')" text-gray-900 dark:text-gray-100>
+      <div icon-btn i-carbon-language mr-1 />
+      <select v-model="selectedLocale" text-xs dark:border="1 white" border="1 black" text-gray-900 dark:text-gray-100 dark:bg-black>
         <option disabled :value="selectedLocale">{{ convertToSpecificLanguage(selectedLocale) }}
         </option>
         <option v-for="(locale, index) in locales" :key="`${locale}-${index}`" :value="locale">
@@ -39,11 +39,11 @@ watch(selectedLocale, async (newSelectedLocale, oldSelectedLocale) => {
       </select>
     </a>
 
-    <RouterLink icon-btn mx-2 flex-row to="/about" :title="t('button.about')">
+    <RouterLink icon-btn mx-2 flex-row to="/about" :title="t('button.about')" text-gray-900 dark:text-gray-100>
       <div i-carbon-dicom-overlay />
     </RouterLink>
 
-    <a icon-btn mx-2 flex-row rel="noreferrer" href="https://github.com/tranlam1997" target="_blank" title="GitHub">
+    <a icon-btn mx-2 flex-row rel="noreferrer" href="https://github.com/tranlam1997" target="_blank" title="GitHub" text-gray-900 dark:text-gray-100>
       <div i-carbon-logo-github />
     </a>
   </nav>
