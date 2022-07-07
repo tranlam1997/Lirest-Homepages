@@ -15,7 +15,7 @@ const { t } = useI18n()
 
 <template>
   <nav w-full flex-row justify-items-start mt-4>
-    <Navigator />
+    <MainNavBar />
     <SlideShow />
   </nav>
 </template>
