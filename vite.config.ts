@@ -17,6 +17,10 @@ import Unocss from 'unocss/vite'
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
 export default defineConfig({
+  root: path.resolve(__dirname, '.'),
+
+  base: 'http://127.0.0.1:3333',
+
   server: {
     port: 3333,
     host: '127.0.0.1',
@@ -27,6 +31,8 @@ export default defineConfig({
       '@/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
+
+  envDir: path.resolve(__dirname, 'env'),
 
   plugins: [
     Vue({
@@ -60,7 +66,9 @@ export default defineConfig({
     // https://github.com/antfu/unplugin-vue-components
     Components({
       // allow auto load markdown components under `./src/components/`
+      dirs: ['./src/**/components'],
       extensions: ['vue', 'md'],
+      deep: true,
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/components.d.ts',

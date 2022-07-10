@@ -36,10 +36,10 @@
     "prism-theme-vars": "^0.2.2",
     "vee-validate": "^4.5.11",
     "vue": "^3.2.33",
+    "vue-axios": "^3.4.1",
     "vue-demi": "^0.12.5",
     "vue-i18n": "9.1.9",
-    "vue-router": "^4.0.15",
-    "yup": "^0.32.11"
+    "vue-router": "^4.0.15"
   },
   "optionalDependencies": {
     "cypress": "^9.6.1"

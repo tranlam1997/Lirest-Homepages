@@ -1,7 +1,7 @@
 <template>
   <div py-10 dark:bg-black>
-    <SecondaryNavBar class="secondary-nav-bar" />
-    <main class="mt-4 px-4 py-10 text-center flex-col items-center w-1/2" dark:bg-dark-600>
+    <NavBarSecondary class="secondary-nav-bar" />
+    <main class="mt-6 px-4 py-10 text-center flex-col items-center w-1/2" dark:bg-dark-600>
       <LirestLogo />
       <i class="horizontal-line" />
       <RouterView />

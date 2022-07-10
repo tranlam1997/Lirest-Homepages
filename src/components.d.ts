@@ -6,18 +6,18 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
-    Header: typeof import('./components/Header.vue')['default']
     LirestLogo: typeof import('./components/LirestLogo.vue')['default']
-    LoginButton: typeof import('./components/LoginButton.vue')['default']
-    LoginForm: typeof import('./components/LoginForm.vue')['default']
-    MainNavBar: typeof import('./components/MainNavBar.vue')['default']
+    LoginButton: typeof import('./modules/auth/components/LoginButton.vue')['default']
+    LoginForm: typeof import('./modules/auth/components/LoginForm.vue')['default']
+    NavBarMain: typeof import('./components/NavBarMain.vue')['default']
+    NavBarSecondary: typeof import('./components/NavBarSecondary.vue')['default']
     README: typeof import('./components/README.md')['default']
-    RegisterButton: typeof import('./components/RegisterButton.vue')['default']
-    RegisterForm: typeof import('./components/RegisterForm.vue')['default']
+    RegisterButton: typeof import('./modules/auth/components/RegisterButton.vue')['default']
+    RegisterForm: typeof import('./modules/auth/components/RegisterForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SecondaryNavBar: typeof import('./components/SecondaryNavBar.vue')['default']
     SlideShow: typeof import('./components/SlideShow.vue')['default']
+    TheHeader: typeof import('./components/TheHeader.vue')['default']
   }
 }
 

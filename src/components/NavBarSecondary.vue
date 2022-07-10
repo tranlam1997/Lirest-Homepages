@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { toggleDark } from '@/composables'
 import { convertLocaleCodeToLanguage } from '@/common/helpers/locale.helper'
-import { useUserStore } from '@/stores/user'
+import { useLocaleStore } from '@/common/store/locale.store'
 
 const { t, availableLocales, locale } = useI18n()
-const userStore = useUserStore()
+const userStore = useLocaleStore()
 const selectedLocale = ref('')
 const locales = ref(availableLocales)
 
@@ -15,13 +15,11 @@ const convertToSpecificLanguage = (language: string) => {
 }
 
 onMounted(() => {
-  console.log(userStore.currentLocale)
+  selectedLocale.value = userStore.currentLocale
 })
 
 watch(selectedLocale, async (newSelectedLocale, oldSelectedLocale) => {
-  console.log(userStore.currentLocale)
   userStore.$patch({ currentLocale: newSelectedLocale })
-  console.log(userStore.currentLocale)
   locale.value = locales.value[locales.value.indexOf(newSelectedLocale)]
   locales.value = [...locales.value.filter(l => l !== newSelectedLocale), oldSelectedLocale].filter(item => item)
 })
@@ -46,7 +44,7 @@ watch(selectedLocale, async (newSelectedLocale, oldSelectedLocale) => {
         v-model="selectedLocale" text-xs dark:border="1 white" border="1 black" text-gray-900 dark:text-gray-100
         dark:bg-black
       >
-        <option disabled :value="userStore.currentLocale">{{ convertToSpecificLanguage(selectedLocale) }}
+        <option disabled :value="selectedLocale">{{ convertToSpecificLanguage(selectedLocale) }}
         </option>
         <option v-for="(locale, index) in locales" :key="`${locale}-${index}`" :value="locale">
           {{ convertToSpecificLanguage(locale) }}
