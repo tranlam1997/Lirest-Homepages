@@ -10,5 +10,5 @@
 
 <route lang="yaml">
 meta:
-  layout: authen
+  layout: auth
 </route>

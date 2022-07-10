@@ -1,33 +1,34 @@
 <script setup lang="ts">
 import { ErrorMessage, Field as VeeField, Form as VeeForm } from 'vee-validate'
-import User from '@/models/user'
+import User from '@/modules/users/user.model'
 import { isDark } from '@/composables'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/modules/users/user.store'
 
-const userStore = useUserStore()
 const user = reactive(new User())
+const confirmPassword = ref('')
 const registerSchema = {
   firstName: 'required|min:3|max:100|name',
   lastName: 'required|min:3|max:100|name',
   dateOfBirth: 'required',
   email: 'required|email',
-  address: 'required|min:3|max:100',
   phoneNumber: 'required|phone',
+  username: 'required|min:3|max:20',
   password: 'required|password',
-  confirm_password: 'passwords_mismatch:@password',
+  confirmPassword: 'passwords_mismatch:@password',
   tos: 'tos',
 }
 
 const isFilledOut = () => {
-  return user.email && user.password
+  return user.firstName && user.lastName && user.dateOfBirth && user.email && user.phoneNumber && user.username && user.password && confirmPassword
+}
+
+const register = () => {
+  useUserStore.registerUser(user)
 }
 
 const onSubmit = () => {
-}
 
-onMounted(() => {
-  console.log(userStore.currentLocale)
-})
+}
 </script>
 
 <template>
@@ -68,19 +69,19 @@ onMounted(() => {
 
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
-        <label for="address">Address:</label>
-        <VeeField v-model="user.address" type="text" name="address" input-format />
-        <i v-if="isDark" class="dark" />
-        <i v-if="!idDark" class="light" />
-        <ErrorMessage class="error-message" name="address" />
-      </div>
-
-      <div flex-col justify-items-start class="ct-basis-45">
         <label for="phoneNumber">Phone Number:</label>
         <VeeField v-model="user.phoneNumber" type="text" name="phoneNumber" input-format />
         <i v-if="isDark" class="dark" />
         <i v-if="!idDark" class="light" />
         <ErrorMessage class="error-message" name="phoneNumber" />
+      </div>
+
+      <div flex-col justify-items-start class="ct-basis-45">
+        <label for="username">Username:</label>
+        <VeeField v-model="user.username" type="text" name="username" input-format />
+        <i v-if="isDark" class="dark" />
+        <i v-if="!idDark" class="light" />
+        <ErrorMessage class="error-message" name="username" />
       </div>
     </div>
 
@@ -95,7 +96,7 @@ onMounted(() => {
 
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="confirmPassword">Confirm Password:</label>
-        <VeeField v-model="user.confirmPassword" type="password" name="confirmPassword" input-format />
+        <VeeField v-model="confirmPassword" type="password" name="confirmPassword" input-format />
         <i v-if="isDark" class="dark" />
         <i v-if="!idDark" class="light" />
         <ErrorMessage class="error-message" name="confirmPassword" />

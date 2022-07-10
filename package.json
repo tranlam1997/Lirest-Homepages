@@ -38,8 +38,7 @@
     "vue": "^3.2.33",
     "vue-demi": "^0.12.5",
     "vue-i18n": "9.1.9",
-    "vue-router": "^4.0.15",
-    "yup": "^0.32.11"
+    "vue-router": "^4.0.15"
   },
   "optionalDependencies": {
     "cypress": "^9.6.1"

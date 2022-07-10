@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ErrorMessage, Field as VeeField, Form as VeeForm } from 'vee-validate'
-import User from '@/models/user'
+import User from '@/modules/users/user.model'
 import { isDark } from '@/composables'
 
 const user = reactive(new User())
