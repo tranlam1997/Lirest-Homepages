@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { ErrorMessage, Field as VeeField, Form as VeeForm } from 'vee-validate'
+import { useField, useForm } from 'vee-validate'
 import User from '@/modules/users/user.model'
 import { isDark } from '@/composables'
+import { useUserStore } from '@/modules/users/user.store'
 
 const user = reactive(new User())
-const confirmPassword = ref('')
+const isDarkMode = isDark
 const registerSchema = {
   firstName: 'required|min:3|max:100|name',
   lastName: 'required|min:3|max:100|name',
@@ -17,88 +18,101 @@ const registerSchema = {
   tos: 'tos',
 }
 
+const { handleSubmit, values, errors } = useForm({
+  validationSchema: registerSchema,
+})
+
 const isFilledOut = () => {
-  return user.firstName && user.lastName && user.dateOfBirth && user.email && user.phoneNumber && user.username && user.password && confirmPassword
+  return Object.keys(values).every(key => values[key])
 }
+
+const onSubmit = handleSubmit((values) => {
+  console.log('hehe')
+})
 
 const register = () => {
-
+  const userStore = useUserStore()
+  userStore.registerUser(user)
 }
 
-const onSubmit = () => {
+onMounted(() => {
+  console.log('mounted')
+})
 
-}
+onUpdated(() => {
+  console.log(values.lastName)
+})
 </script>
 
 <template>
-  <VeeForm flex-col text-dark dark:text-white items-center :validation-schema="registerSchema" @submit="onSubmit">
+  <form flex-col text-dark dark:text-white items-center @submit="onSubmit">
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="firstName">First Name:</label>
-        <VeeField v-model="user.firstName" type="text" name="firstName" input-format />
-        <i v-if="isDark" class="dark" />
-        <i v-if="!idDark" class="light" />
-        <ErrorMessage class="error-message" name="firstName" />
+        <input v-model="values.firstName" type="text" name="firstName" input-format>
+        <i v-if="isDarkMode" class="dark" />
+        <i v-if="!isDarkMode" class="light" />
+        <span class="error-message">{{ errors.firstName }}</span>
       </div>
 
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="lastName">Last Name:</label>
-        <VeeField v-model="user.lastName" type="text" name="lastName" input-format />
-        <i v-if="isDark" class="dark" />
-        <i v-if="!idDark" class="light" />
-        <ErrorMessage class="error-message" name="lastName" />
+        <input v-model="values.lastName" type="text" name="lastName" input-format>
+        <i v-if="isDarkMode" class="dark" />
+        <i v-if="!isDarkMode" class="light" />
+        <span class="error-message">{{ errors.lastName }}</span>
       </div>
     </div>
 
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="dateOfBirth">Date Of Birth:</label>
-        <VeeField v-model="user.dateOfBirth" p-1 border-1 border-gray-400 placeholder="DD-MM-YYYY" type="date" name="dateOfBirth" dark:text-dark />
-        <ErrorMessage class="error-message" name="dateOfBirth" />
+        <input v-model="values.dateOfBirth" p-1 border-1 border-gray-400 placeholder="DD-MM-YYYY" type="date" name="dateOfBirth" dark:text-dark>
+        <span class="error-message">{{ errors.dateOfBirth }}</span>
       </div>
 
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="email">Email:</label>
-        <VeeField v-model="user.email" type="text" name="email" input-format />
-        <i v-if="isDark" class="dark" />
-        <i v-if="!idDark" class="light" />
-        <ErrorMessage class="error-message" name="email" />
+        <input v-model="values.email" type="text" name="email" input-format>
+        <i v-if="isDarkMode" class="dark" />
+        <i v-if="!isDarkMode" class="light" />
+        <span class="error-message">{{ errors.email }}</span>
       </div>
     </div>
 
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="phoneNumber">Phone Number:</label>
-        <VeeField v-model="user.phoneNumber" type="text" name="phoneNumber" input-format />
-        <i v-if="isDark" class="dark" />
-        <i v-if="!idDark" class="light" />
-        <ErrorMessage class="error-message" name="phoneNumber" />
+        <input v-model="values.phoneNumber" type="text" name="phoneNumber" input-format>
+        <i v-if="isDarkMode" class="dark" />
+        <i v-if="!isDarkMode" class="light" />
+        <span class="error-message">{{ errors.phoneNumber }}</span>
       </div>
 
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="username">Username:</label>
-        <VeeField v-model="user.username" type="text" name="username" input-format />
-        <i v-if="isDark" class="dark" />
-        <i v-if="!idDark" class="light" />
-        <ErrorMessage class="error-message" name="username" />
+        <input v-model="values.username" type="text" name="username" input-format>
+        <i v-if="isDarkMode" class="dark" />
+        <i v-if="!isDarkMode" class="light" />
+        <span class="error-message">{{ errors.username }}</span>
       </div>
     </div>
 
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="password">Password:</label>
-        <VeeField v-model="user.password" type="password" name="password" input-format />
-        <i v-if="isDark" class="dark" />
-        <i v-if="!idDark" class="light" />
-        <ErrorMessage class="error-message" name="password" />
+        <input v-model="values.password" type="password" name="password" input-format>
+        <i v-if="isDarkMode" class="dark" />
+        <i v-if="!isDarkMode" class="light" />
+        <span class="error-message">{{ errors.password }}</span>
       </div>
 
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="confirmPassword">Confirm Password:</label>
-        <VeeField v-model="confirmPassword" type="password" name="confirmPassword" input-format />
-        <i v-if="isDark" class="dark" />
-        <i v-if="!idDark" class="light" />
-        <ErrorMessage class="error-message" name="confirmPassword" />
+        <input v-model="values.confirmPassword" type="password" name="confirmPassword" input-format>
+        <i v-if="isDarkMode" class="dark" />
+        <i v-if="!isDarkMode" class="light" />
+        <span class="error-message">{{ errors.confirmPassword }}</span>
       </div>
     </div>
 
@@ -108,11 +122,11 @@ const onSubmit = () => {
           Sign in
         </router-link>
       </p>
-      <button type="submit" :disabled="!isFilledOut()" btn-submit>
+      <button :disabled="!isFilledOut()" btn-submit>
         Sign up
       </button>
     </div>
-  </VeeForm>
+  </form>
 </template>
 
 <style lang="scss" scoped>

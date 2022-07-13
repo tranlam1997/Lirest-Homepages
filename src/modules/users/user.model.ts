@@ -13,13 +13,13 @@
 
 export default class User {
   [x: string]: string
-  constructor(firstName = '', lastName = '', dateOfBirth = '', email = '', address = '', phoneNumber = '', password = '') {
+  constructor(firstName = '', lastName = '', dateOfBirth = '', email = '', phoneNumber = '', username = '', password = '') {
     this.firstName = firstName
     this.lastName = lastName
     this.dateOfBirth = dateOfBirth
     this.email = email
-    this.address = address
     this.phoneNumber = phoneNumber
+    this.userName = username
     this.password = password
   }
 }
