@@ -1,46 +1,55 @@
 <script setup lang="ts">
-import { useField, useForm } from 'vee-validate'
-import User from '@/modules/users/user.model'
+import { Field, useForm } from 'vee-validate'
+import type { IRegisterForm } from '../auth.interface'
 import { isDark } from '@/composables'
 import { useUserStore } from '@/modules/users/user.store'
+import userService from '@/modules/users/user.service'
 
-const user = reactive(new User())
+const emit = defineEmits<{
+  (e: 'toastMessage', data: { message?: string; messageType?: string; active: boolean }): void
+}>()
+const router = useRouter()
 const isDarkMode = isDark
+const userStore = useUserStore()
+const initialValues = {
+  firstname: '',
+  lastname: '',
+  dateOfBirth: '',
+  email: '',
+  phoneNumber: '',
+  username: '',
+  password: '',
+  confirmPassword: '',
+}
+
 const registerSchema = {
-  firstName: 'required|min:3|max:100|name',
-  lastName: 'required|min:3|max:100|name',
+  firstname: 'required|min:3|max:20|name',
+  lastname: 'required|min:3|max:20|name',
   dateOfBirth: 'required',
   email: 'required|email',
   phoneNumber: 'required|phone',
-  username: 'required|min:3|max:20',
-  password: 'required|password',
-  confirmPassword: 'passwords_mismatch:@password',
-  tos: 'tos',
+  username: 'required|min:3|max:30',
+  password: 'required|min:3|max:30|password',
+  confirmPassword: 'required|passwords_mismatch:@password',
 }
 
-const { handleSubmit, values, errors } = useForm({
+const { handleSubmit, validateField, values, errors } = useForm<IRegisterForm>({
   validationSchema: registerSchema,
+  initialValues,
 })
 
 const isFilledOut = () => {
-  return Object.keys(values).every(key => values[key])
+  return Object.keys(values).every(key => values[key as keyof typeof values])
 }
 
-const onSubmit = handleSubmit((values) => {
-  console.log('hehe')
+const onSubmit = handleSubmit(async (values) => {
+  await userService.createUser({ user: values, userStore, emitEvent: emit, vueRouter: router })
 })
 
-const register = () => {
-  const userStore = useUserStore()
-  userStore.registerUser(user)
-}
-
 onMounted(() => {
-  console.log('mounted')
 })
 
 onUpdated(() => {
-  console.log(values.lastName)
 })
 </script>
 
@@ -48,32 +57,32 @@ onUpdated(() => {
   <form flex-col text-dark dark:text-white items-center @submit="onSubmit">
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
-        <label for="firstName">First Name:</label>
-        <input v-model="values.firstName" type="text" name="firstName" input-format>
+        <label for="firstname">First Name:</label>
+        <Field type="text" name="firstname" input-format @input="validateField('firstname')" />
         <i v-if="isDarkMode" class="dark" />
         <i v-if="!isDarkMode" class="light" />
-        <span class="error-message">{{ errors.firstName }}</span>
+        <span class="error-message">{{ errors.firstname }}</span>
       </div>
 
       <div flex-col justify-items-start class="ct-basis-45">
-        <label for="lastName">Last Name:</label>
-        <input v-model="values.lastName" type="text" name="lastName" input-format>
+        <label for="lastname">Last Name:</label>
+        <Field type="text" name="lastname" input-format @input="validateField('lastname')" />
         <i v-if="isDarkMode" class="dark" />
         <i v-if="!isDarkMode" class="light" />
-        <span class="error-message">{{ errors.lastName }}</span>
+        <span class="error-message">{{ errors.lastname }}</span>
       </div>
     </div>
 
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="dateOfBirth">Date Of Birth:</label>
-        <input v-model="values.dateOfBirth" p-1 border-1 border-gray-400 placeholder="DD-MM-YYYY" type="date" name="dateOfBirth" dark:text-dark>
+        <Field p-1 border-1 border-gray-400 placeholder="DD-MM-YYYY" type="date" name="dateOfBirth" dark:text-dark @input="validateField('dateOfBirth')" />
         <span class="error-message">{{ errors.dateOfBirth }}</span>
       </div>
 
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="email">Email:</label>
-        <input v-model="values.email" type="text" name="email" input-format>
+        <Field type="text" name="email" input-format @input="validateField('email')" />
         <i v-if="isDarkMode" class="dark" />
         <i v-if="!isDarkMode" class="light" />
         <span class="error-message">{{ errors.email }}</span>
@@ -83,7 +92,7 @@ onUpdated(() => {
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="phoneNumber">Phone Number:</label>
-        <input v-model="values.phoneNumber" type="text" name="phoneNumber" input-format>
+        <Field type="text" name="phoneNumber" input-format @input="validateField('phoneNumber')" />
         <i v-if="isDarkMode" class="dark" />
         <i v-if="!isDarkMode" class="light" />
         <span class="error-message">{{ errors.phoneNumber }}</span>
@@ -91,7 +100,7 @@ onUpdated(() => {
 
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="username">Username:</label>
-        <input v-model="values.username" type="text" name="username" input-format>
+        <Field type="text" name="username" input-format @input="validateField('username')" />
         <i v-if="isDarkMode" class="dark" />
         <i v-if="!isDarkMode" class="light" />
         <span class="error-message">{{ errors.username }}</span>
@@ -101,7 +110,7 @@ onUpdated(() => {
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="password">Password:</label>
-        <input v-model="values.password" type="password" name="password" input-format>
+        <Field type="password" name="password" input-format @input="validateField('password')" />
         <i v-if="isDarkMode" class="dark" />
         <i v-if="!isDarkMode" class="light" />
         <span class="error-message">{{ errors.password }}</span>
@@ -109,7 +118,7 @@ onUpdated(() => {
 
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="confirmPassword">Confirm Password:</label>
-        <input v-model="values.confirmPassword" type="password" name="confirmPassword" input-format>
+        <Field type="password" name="confirmPassword" input-format />
         <i v-if="isDarkMode" class="dark" />
         <i v-if="!isDarkMode" class="light" />
         <span class="error-message">{{ errors.confirmPassword }}</span>

@@ -1,20 +1,16 @@
 import $api from '../api'
-import type User from './user.model'
+import type { IUser } from './user.interface'
 
 export const useUserStore = defineStore('userId', {
   state: () => {
     return {
-      counter: 0,
-      name: 'Eduardo',
-      isAdmin: true,
+      users: [],
     }
   },
 
   actions: {
-    async registerUser(data: User) {
-      console.log($api)
-      const res = await $api.user.createUser(data)
-      console.log(res)
+    async registerUser(data: IUser) {
+      return $api.user.createUser(data)
     },
   },
 })

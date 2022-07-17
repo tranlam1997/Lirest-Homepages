@@ -1,38 +1,55 @@
 <script setup lang="ts">
-import { ErrorMessage, Field as VeeField, Form as VeeForm } from 'vee-validate'
-import User from '@/modules/users/user.model'
+import { Field, useForm } from 'vee-validate'
+import { useAuthStore } from '../auth.store'
+import authService from '../auth.service'
+import type { ILoginData } from '../auth.interface'
 import { isDark } from '@/composables'
 
-const user = reactive(new User())
+const emit = defineEmits<{
+  (e: 'loginToastMessage', data: { message?: string; messageType?: string; active: boolean }): void
+}>()
+const router = useRouter()
+const isDarkMode = isDark
+const authStore = useAuthStore()
 const loginSchema = {
   email: 'required|email',
-  password: 'required|min:6',
+  password: 'required|min:3',
 }
+const initialValues = {
+  email: '',
+  password: '',
+}
+
+const { handleSubmit, values, errors } = useForm<ILoginData>({
+  validationSchema: loginSchema,
+  initialValues,
+})
 
 const isFilledOut = () => {
-  return user.email && user.password
+  return Object.keys(values).every(key => values[key as keyof typeof values])
 }
 
-const onSubmit = () => {
-}
+const onSubmit = handleSubmit(async (values) => {
+  await authService.login({ loginData: values, authStore, emitEvent: emit, vueRouter: router })
+})
 </script>
 
 <template>
-  <VeeForm flex-col text-dark dark:text-white items-center :validation-schema="loginSchema" @submit="onSubmit">
+  <form flex-col text-dark dark:text-white items-center @submit="onSubmit">
     <div class="form-element" flex-col justify-items-start>
       <label for="email">Username/Email:</label>
-      <VeeField v-model="user.email" type="text" name="email" input-format />
-      <i v-if="isDark" class="dark" />
-      <i v-if="!idDark" class="light" />
-      <ErrorMessage class="error-message" name="email" />
+      <Field type="text" name="email" input-format />
+      <i v-if="isDarkMode" class="dark" />
+      <i v-if="!isDarkMode" class="light" />
+      <span class="error-message">{{ errors.email }}</span>
     </div>
 
     <div class="form-element" flex-col>
       <label for="password">Password:</label>
-      <VeeField v-model="user.password" type="password" name="password" input-format />
-      <i v-if="isDark" class="dark" />
-      <i v-if="!idDark" class="light" />
-      <ErrorMessage class="error-message" name="password" />
+      <Field type="password" name="password" input-format />
+      <i v-if="isDarkMode" class="dark" />
+      <i v-if="!isDarkMode" class="light" />
+      <span class="error-message">{{ errors.password }}</span>
     </div>
 
     <div flex-row justify-between class="w-1/2">
@@ -45,7 +62,7 @@ const onSubmit = () => {
         Sign in
       </button>
     </div>
-  </VeeForm>
+  </form>
 </template>
 
 <style lang="scss" scoped>

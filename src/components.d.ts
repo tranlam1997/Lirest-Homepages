@@ -5,6 +5,7 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BaseTransition: typeof import('./components/BaseTransition.vue')['default']
     Counter: typeof import('./components/Counter.vue')['default']
     LirestLogo: typeof import('./components/LirestLogo.vue')['default']
     LoginButton: typeof import('./modules/auth/components/LoginButton.vue')['default']
@@ -18,6 +19,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SlideShow: typeof import('./components/SlideShow.vue')['default']
     TheHeader: typeof import('./components/TheHeader.vue')['default']
+    ToastMessage: typeof import('./components/ToastMessage.vue')['default']
   }
 }
 

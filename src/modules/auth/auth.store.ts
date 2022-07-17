@@ -1,9 +1,9 @@
+import $api from '../api'
+
 export const useAuthStore = defineStore('authId', {
   state: () => {
     return {
-      counter: 0,
-      name: 'Eduardo',
-      isAdmin: true,
+      userInfos: [],
     }
   },
 
@@ -12,7 +12,9 @@ export const useAuthStore = defineStore('authId', {
   },
 
   actions: {
-
+    async login(email: string, password: string) {
+      return $api.auth.login(email, password)
+    },
   },
 })
 

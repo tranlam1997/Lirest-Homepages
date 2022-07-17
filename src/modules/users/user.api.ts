@@ -1,8 +1,8 @@
-import type { AxiosInstance } from 'axios'
-import type User from './user.model'
+import type { AxiosError, AxiosInstance } from 'axios'
+import type { IUser } from './user.interface'
 
 export default (axios: AxiosInstance) => ({
-  createUser(user: User) {
-    return axios.post('/users', user)
+  async createUser(user: IUser) {
+    return axios.post('/users', user).catch((err: AxiosError) => err.response)
   },
 })

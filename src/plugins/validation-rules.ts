@@ -13,7 +13,7 @@ export const install: UserModule = () => {
     return phoneRegex.test(value)
   }
   const isValidPassword = (value: string) => {
-    const passwordRegex = /^((?=.*\d)(?=.*[A-Z])(?=.).{6,16})$/
+    const passwordRegex = /.{3,16}$/
     return passwordRegex.test(value)
   }
   const isValidName = (value: string) => {
