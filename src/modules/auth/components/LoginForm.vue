@@ -19,6 +19,7 @@ const initialValues = {
   email: '',
   password: '',
 }
+const inputType = ref('')
 
 const { handleSubmit, values, errors } = useForm<ILoginData>({
   validationSchema: loginSchema,
@@ -27,6 +28,10 @@ const { handleSubmit, values, errors } = useForm<ILoginData>({
 
 const isFilledOut = () => {
   return Object.keys(values).every(key => values[key as keyof typeof values])
+}
+
+const changeInputType = (type: string) => {
+  inputType.value = type
 }
 
 const onSubmit = handleSubmit(async (values) => {
@@ -46,9 +51,10 @@ const onSubmit = handleSubmit(async (values) => {
 
     <div class="form-element" flex-col>
       <label for="password">Password:</label>
-      <Field type="password" name="password" input-format />
+      <Field :type="inputType" name="password" input-format />
       <i v-if="isDarkMode" class="dark" />
       <i v-if="!isDarkMode" class="light" />
+      <ContentToggler @toggle-password="changeInputType" />
       <span class="error-message">{{ errors.password }}</span>
     </div>
 
@@ -66,53 +72,53 @@ const onSubmit = handleSubmit(async (values) => {
 </template>
 
 <style lang="scss" scoped>
- form {
-      margin: 1rem 0 1rem;
-      width: 75%;
-      padding: 2rem 0 1rem;
+form {
+  margin: 1rem 0 1rem;
+  width: 75%;
+  padding: 2rem 0 1rem;
 
-      & > .form-element {
-        width: 50%;
-        height: 7rem;
-      }
-    }
+  &>.form-element {
+    width: 50%;
+    height: 7rem;
+  }
+}
 
-    i::after {
-      content: '';
-      display: block;
-      width: 0;
-      margin-top: -1px;
-      margin-left: 50%;
-      border: 1px solid transparent;
-      transition: all 0.5s ease-in-out;
-    }
+i::after {
+  content: '';
+  display: block;
+  width: 0;
+  margin-top: -1px;
+  margin-left: 50%;
+  border: 1px solid transparent;
+  transition: all 0.5s ease-in-out;
+}
 
-    input:focus + .light::after {
-      width: 100%;
-      margin: 0;
-      border-color: #241c04;
-      margin-top: -1px;
-    }
+input:focus+.light::after {
+  width: 100%;
+  margin: 0;
+  border-color: #241c04;
+  margin-top: -1px;
+}
 
-    input:focus + .dark:after {
-      width: 100%;
-      margin: 0;
-      border-color: #ffffff;
-      margin-top: -1px;
-    }
+input:focus+.dark:after {
+  width: 100%;
+  margin: 0;
+  border-color: #ffffff;
+  margin-top: -1px;
+}
 
-    .error-message {
-      color: #f44336;
-      font-size: 0.8rem;
-    }
+.error-message {
+  color: #f44336;
+  font-size: 0.8rem;
+}
 
-    label {
-      text-align: left;
-      align-self: auto;
-    }
+label {
+  text-align: left;
+  align-self: auto;
+}
 
-    button {
-      padding: 0.25rem;
-      margin: 1rem 0;
-    }
+button {
+  padding: 0.25rem;
+  margin: 1rem 0;
+}
 </style>
