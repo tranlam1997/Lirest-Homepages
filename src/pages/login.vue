@@ -13,13 +13,23 @@ const assignMessage = (data: { message?: string; messageType?: string; active: b
 </script>
 
 <template>
-  <ToastMessage :class="messageType" :message-position="{ top: '-100px' }" :style="active ? { transform: 'translateY(100px)' } : ''">
-    {{ message }}
-  </ToastMessage>
-  <LoginForm @login-toast-message="assignMessage" />
+  <NavBarSecondary absolute top-0 right-0 />
+  <main class="mt-6 mx-auto px-4 py-10 text-center flex-col items-center w-2/5" dark:bg-dark-600>
+    <LirestLogo />
+    <BaseHorizontalLine width="75%" />
+    <ToastMessage :class="messageType" :message-position="{ top: '-100px' }" :style="active ? { transform: 'translateY(100px)' } : ''">
+      {{ message }}
+    </ToastMessage>
+    <LoginForm @login-toast-message="assignMessage" />
+  </main>
 </template>
 
 <style scoped lang="scss">
+ main {
+  position: relative;
+  top: 0;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+ }
 </style>
 
 <route lang="yaml">

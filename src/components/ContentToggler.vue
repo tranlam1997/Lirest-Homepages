@@ -1,7 +1,4 @@
 <script setup lang="ts">
-defineProps<{
-  content: string
-}>()
 const active = ref(true)
 const toggleContent = () => {
   active.value = !active.value
@@ -9,7 +6,7 @@ const toggleContent = () => {
 </script>
 
 <template>
-  <div absolute>
+  <div>
     <div
       v-if="active" class="i-fa-regular:eye" cursor-pointer @click.prevent="toggleContent"
       @click="$emit('toggleContent', 'text')"

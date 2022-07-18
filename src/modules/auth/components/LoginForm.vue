@@ -8,18 +8,21 @@ import { isDark } from '@/composables'
 const emit = defineEmits<{
   (e: 'loginToastMessage', data: { message?: string; messageType?: string; active: boolean }): void
 }>()
+
 const router = useRouter()
 const isDarkMode = isDark
 const authStore = useAuthStore()
+const inputType = ref('password')
+
 const loginSchema = {
   email: 'required|email',
   password: 'required|min:3',
 }
+
 const initialValues = {
   email: '',
   password: '',
 }
-const inputType = ref('')
 
 const { handleSubmit, values, errors } = useForm<ILoginData>({
   validationSchema: loginSchema,
@@ -51,10 +54,12 @@ const onSubmit = handleSubmit(async (values) => {
 
     <div class="form-element" flex-col>
       <label for="password">Password:</label>
-      <Field :type="inputType" name="password" input-format />
-      <i v-if="isDarkMode" class="dark" />
-      <i v-if="!isDarkMode" class="light" />
-      <ContentToggler @toggle-password="changeInputType" />
+      <div relative flex-col>
+        <Field w-full :type="inputType" name="password" input-format />
+        <i v-if="isDarkMode" class="dark" />
+        <i v-if="!isDarkMode" class="light" />
+        <ContentToggler bg-white dark:bg-dark absolute pl-2 top-1 right-0 @toggle-content="changeInputType" />
+      </div>
       <span class="error-message">{{ errors.password }}</span>
     </div>
 
@@ -74,7 +79,7 @@ const onSubmit = handleSubmit(async (values) => {
 <style lang="scss" scoped>
 form {
   margin: 1rem 0 1rem;
-  width: 75%;
+  width: 85%;
   padding: 2rem 0 1rem;
 
   &>.form-element {
@@ -87,7 +92,6 @@ i::after {
   content: '';
   display: block;
   width: 0;
-  margin-top: -1px;
   margin-left: 50%;
   border: 1px solid transparent;
   transition: all 0.5s ease-in-out;
@@ -97,14 +101,12 @@ input:focus+.light::after {
   width: 100%;
   margin: 0;
   border-color: #241c04;
-  margin-top: -1px;
 }
 
 input:focus+.dark:after {
   width: 100%;
   margin: 0;
   border-color: #ffffff;
-  margin-top: -1px;
 }
 
 .error-message {

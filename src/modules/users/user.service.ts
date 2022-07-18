@@ -27,7 +27,7 @@ class UsersService {
     }
     else {
       data.emitEvent('toastMessage', {
-        message: res.data.message,
+        message: res.data?.message,
         messageType: 'error',
         active: true,
       })

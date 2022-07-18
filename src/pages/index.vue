@@ -3,15 +3,19 @@
 </script>
 
 <template>
-  <nav flex-row>
+  <TheHeader />
+  <nav flex-row class="middle">
     <NavBarMain />
     <SlideShow />
   </nav>
+  <NavBarSecondary />
 </template>
 
 <style scoped lang="scss">
-  nav {
+  .middle {
   height: 400px;
+  width: 80%;
+  margin: 2rem auto;
 }
 </style>
 

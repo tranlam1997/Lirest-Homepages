@@ -5,6 +5,7 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BaseHorizontalLine: typeof import('./components/BaseHorizontalLine.vue')['default']
     BaseTransition: typeof import('./components/BaseTransition.vue')['default']
     ContentToggler: typeof import('./components/ContentToggler.vue')['default']
     Counter: typeof import('./components/Counter.vue')['default']
@@ -13,15 +14,17 @@ declare module '@vue/runtime-core' {
     LoginForm: typeof import('./modules/auth/components/LoginForm.vue')['default']
     NavBarMain: typeof import('./components/NavBarMain.vue')['default']
     NavBarSecondary: typeof import('./components/NavBarSecondary.vue')['default']
-    PasswordToggler: typeof import('./components/PasswordToggler.vue')['default']
     README: typeof import('./components/README.md')['default']
     RegisterButton: typeof import('./modules/auth/components/RegisterButton.vue')['default']
     RegisterForm: typeof import('./modules/auth/components/RegisterForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SlideShow: typeof import('./components/SlideShow.vue')['default']
+    TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheHeader: typeof import('./components/TheHeader.vue')['default']
     ToastMessage: typeof import('./components/ToastMessage.vue')['default']
+    UserLogo: typeof import('./modules/users/components/UserLogo.vue')['default']
+    UserMiniMenu: typeof import('./modules/users/components/UserMiniMenu.vue')['default']
   }
 }
 

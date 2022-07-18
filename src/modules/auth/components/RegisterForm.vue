@@ -8,6 +8,7 @@ import userService from '@/modules/users/user.service'
 const emit = defineEmits<{
   (e: 'toastMessage', data: { message?: string; messageType?: string; active: boolean }): void
 }>()
+const inputType = ref('password')
 const router = useRouter()
 const isDarkMode = isDark
 const userStore = useUserStore()
@@ -40,6 +41,10 @@ const { handleSubmit, validateField, values, errors } = useForm<IRegisterForm>({
 
 const isFilledOut = () => {
   return Object.keys(values).every(key => values[key as keyof typeof values])
+}
+
+const changeInputType = (type: string) => {
+  inputType.value = type
 }
 
 const onSubmit = handleSubmit(async (values) => {
@@ -110,9 +115,13 @@ onUpdated(() => {
     <div class="form-element" flex-row justify-between>
       <div flex-col justify-items-start class="ct-basis-45">
         <label for="password">Password:</label>
-        <Field type="password" name="password" input-format @input="validateField('password')" />
-        <i v-if="isDarkMode" class="dark" />
-        <i v-if="!isDarkMode" class="light" />
+        <div relative flex-col>
+          <Field :type="inputType" name="password" input-format @input="validateField('password')" />
+          <i v-if="isDarkMode" class="dark" />
+          <i v-if="!isDarkMode" class="light" />
+          <ContentToggler bg-white dark:bg-dark absolute pl-2 top-1 right-0 @toggle-content="changeInputType" />
+        </div>
+
         <span class="error-message">{{ errors.password }}</span>
       </div>
 
