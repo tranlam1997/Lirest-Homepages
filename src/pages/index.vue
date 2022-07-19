@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
@@ -8,11 +7,12 @@
     <NavBarMain />
     <SlideShow />
   </nav>
+  <TheFooter />
   <NavBarSecondary />
 </template>
 
 <style scoped lang="scss">
-  .middle {
+.middle {
   height: 400px;
   width: 80%;
   margin: 2rem auto;

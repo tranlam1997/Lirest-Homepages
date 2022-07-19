@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     ContentToggler: typeof import('./components/ContentToggler.vue')['default']
     Counter: typeof import('./components/Counter.vue')['default']
     LirestLogo: typeof import('./components/LirestLogo.vue')['default']
+    LirestPersonalLogo: typeof import('./components/LirestPersonalLogo.vue')['default']
     LoginButton: typeof import('./modules/auth/components/LoginButton.vue')['default']
     LoginForm: typeof import('./modules/auth/components/LoginForm.vue')['default']
     NavBarMain: typeof import('./components/NavBarMain.vue')['default']
