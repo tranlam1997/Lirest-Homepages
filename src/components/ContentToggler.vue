@@ -6,7 +6,7 @@ const toggleContent = () => {
 </script>
 
 <template>
-  <div>
+  <div flex-row>
     <div
       v-if="active" class="i-fa-regular:eye" cursor-pointer @click.prevent="toggleContent"
       @click="$emit('toggleContent', 'text')"

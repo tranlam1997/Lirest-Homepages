@@ -10,8 +10,10 @@ const changeSelectLocaleStatus = () => {
   <nav text-xl gap-3>
     <IconHome />
     <IconToggleDarkMode />
-    <IconLocale @click.prevent="changeSelectLocaleStatus()" />
-    <InputSelectLocale :active="selectLocaleStatus" />
+    <div flex-row justify-end gap-1 w-full>
+      <InputSelectLocale :active="selectLocaleStatus" />
+      <IconLocale @click.prevent="changeSelectLocaleStatus()" />
+    </div>
     <IconAbout />
     <IconGithub />
   </nav>

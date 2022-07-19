@@ -119,7 +119,7 @@ onUpdated(() => {
           <Field :type="inputType" name="password" input-format @input="validateField('password')" />
           <i v-if="isDarkMode" class="dark" />
           <i v-if="!isDarkMode" class="light" />
-          <ContentToggler bg-white dark:bg-dark absolute pl-2 top-1 right-0 @toggle-content="changeInputType" />
+          <ContentToggler bg-white dark:bg-gray-800 absolute p-1 px-2 top-0 right-0 @toggle-content="changeInputType" />
         </div>
 
         <span class="error-message">{{ errors.password }}</span>

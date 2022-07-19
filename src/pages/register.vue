@@ -14,7 +14,7 @@ const assignMessage = (data: { message?: string; messageType?: string; active: b
 </script>
 
 <template>
-  <NavBarSecondary absolute top-0 right-0 />
+  <NavBarSecondary class="w-1/5" flex-row justify-center absolute mt-4 top-0 right-0 />
   <main class="mt-6 mx-auto px-4 py-10 text-center flex-col items-center w-1/2" dark:bg-dark-600>
     <LirestLogo />
     <BaseHorizontalLine width="75%" />

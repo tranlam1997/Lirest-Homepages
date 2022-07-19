@@ -58,7 +58,7 @@ const onSubmit = handleSubmit(async (values) => {
         <Field w-full :type="inputType" name="password" input-format />
         <i v-if="isDarkMode" class="dark" />
         <i v-if="!isDarkMode" class="light" />
-        <ContentToggler bg-white dark:bg-dark absolute pl-2 top-1 right-0 @toggle-content="changeInputType" />
+        <ContentToggler bg-white dark:bg-gray-800 p-1 px-2 absolute top-0 right-0 @toggle-content="changeInputType" />
       </div>
       <span class="error-message">{{ errors.password }}</span>
     </div>

@@ -2,13 +2,15 @@
 </script>
 
 <template>
+  <div sticky top-50>
+    <NavBarSticky class="w-1/5" flex-col items-end absolute right-20 />
+  </div>
   <TheHeader />
   <nav flex-row class="middle">
     <NavBarMain />
     <SlideShow />
   </nav>
   <TheFooter />
-  <NavBarSecondary />
 </template>
 
 <style scoped lang="scss">

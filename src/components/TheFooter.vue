@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="footer" flex-row justify-around text-white bg-black dark:bg-dark>
+  <div class="footer" flex-row justify-around text-white>
     <div class="basis-2/5" flex-col items-start>
       <LirestPersonalLogo mb-2 />
       <p>&copy; 2022 FQÉT, Inc. </p>
@@ -34,6 +34,7 @@
 
 <style scoped lang="scss">
 .footer {
+  background-image: linear-gradient(to right, #868F96 , #596164);
   margin: 3rem auto;
   width: 60%;
   height: 200px;
