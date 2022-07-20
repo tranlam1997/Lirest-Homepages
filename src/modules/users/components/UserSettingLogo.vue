@@ -3,8 +3,10 @@
 </script>
 
 <template>
-  <slot />
-  <div class="i-carbon:user-profile" />
+  <div>
+    <i class="fa-solid fa-bars fa-2x" />
+    <slot />
+  </div>
 </template>
 
 <style scoped>

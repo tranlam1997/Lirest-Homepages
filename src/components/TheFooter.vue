@@ -47,7 +47,7 @@ div>p {
   cursor: pointer;
 
   &:hover {
-    color: gray;
+    color: rgb(184, 176, 176);
     text-decoration: underline;
   }
 }
