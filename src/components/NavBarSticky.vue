@@ -1,8 +1,11 @@
 <script setup lang="ts">
-const selectLocaleStatus = ref(false)
+const isSelectLocaleActive = ref(false)
 
 const changeSelectLocaleStatus = () => {
-  selectLocaleStatus.value = !selectLocaleStatus.value
+  isSelectLocaleActive.value = !isSelectLocaleActive.value
+}
+const hiddenInputSelectedLocale = () => {
+  isSelectLocaleActive.value = false
 }
 </script>
 
@@ -10,8 +13,8 @@ const changeSelectLocaleStatus = () => {
   <nav text-xl gap-3>
     <IconHome />
     <IconToggleDarkMode />
-    <div flex-row justify-end gap-1 w-full>
-      <InputSelectLocale :active="selectLocaleStatus" />
+    <div v-click-outside="() => { hiddenInputSelectedLocale() }" flex-row justify-end gap-1 w-full>
+      <InputSelectLocale :active="isSelectLocaleActive" />
       <IconLocale @click.prevent="changeSelectLocaleStatus()" />
     </div>
     <IconAbout />
