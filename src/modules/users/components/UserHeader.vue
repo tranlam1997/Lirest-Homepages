@@ -1,13 +1,26 @@
-<script setup>
+<script setup lang="ts">
+const isActive = ref(false)
 
+const username = localStorage.getItem('username')
+
+const activeOrHiddenMenu = () => {
+  isActive.value = !isActive.value
+}
+
+const hiddenUserMiniMenu = () => {
+  isActive.value = false
+}
 </script>
 
 <template>
   <div class="user-header" flex-row justify-between gap-10 bg-white dark:bg-dark>
-    <LirestLogo height="11" grow />
-    <span self-center>{{ 'Hi Lam' }}</span>
-    <UserSettingLogo self-center>
-      <UserMiniMenu absolute top-25 right-15 />
+    <LirestLogo height="h-15" grow />
+    <span self-center>{{ username }}</span>
+    <UserSettingLogo
+      v-click-outside="() => { hiddenUserMiniMenu() }" self-center
+      @toggle-user-mini-menu="activeOrHiddenMenu()"
+    >
+      <UserMiniMenu :active="isActive" absolute top-25 right-15 />
     </UserSettingLogo>
   </div>
 </template>
@@ -19,4 +32,3 @@
   padding: 1rem;
 }
 </style>
-

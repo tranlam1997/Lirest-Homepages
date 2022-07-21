@@ -1,18 +1,28 @@
 <script setup lang="ts">
-const isActive = ref(true)
+import authService from '@/modules/auth/auth.service'
+
+defineProps<{
+  active: boolean
+}>()
+
+const router = useRouter()
+const logout = () => {
+  authService.logout()
+  router.push('/')
+}
 </script>
 
 <template>
-  <div v-if="isActive" class="user-mini-menu">
+  <div v-if="active" class="user-mini-menu" dark:text-dark>
     <RouterLink to="/">
       Profile
     </RouterLink>
     <RouterLink to="/">
       Settings
     </RouterLink>
-    <RouterLink to="/">
+    <Button @click.prevent="logout">
       Log out
-    </RouterLink>
+    </button>
   </div>
 </template>
 

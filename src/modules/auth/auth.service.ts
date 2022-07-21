@@ -13,12 +13,20 @@ class AuthService {
         messageType: 'success',
         active: true,
       })
+
+      localStorage.setItem('userInfo', JSON.stringify({
+        username: res.data.username,
+        accessToken: res.data.accessToken,
+      }))
+
       setTimeout(() => {
         data.emitEvent('loginToastMessage', {
           active: false,
         })
-        data.vueRouter.push('/')
+        data.vueRouter.push('/users')
       }, 3000)
+
+      return res
     }
     else {
       data.emitEvent('loginToastMessage', {
@@ -32,6 +40,10 @@ class AuthService {
         })
       }, 3000)
     }
+  }
+
+  logout() {
+    localStorage.removeItem('userInfo')
   }
 }
 

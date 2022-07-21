@@ -32,7 +32,6 @@ declare module '@vue/runtime-core' {
     TheHeader: typeof import('./components/TheHeader.vue')['default']
     ToastMessage: typeof import('./components/ToastMessage.vue')['default']
     UserHeader: typeof import('./modules/users/components/UserHeader.vue')['default']
-    UserLogo: typeof import('./modules/users/components/UserLogo.vue')['default']
     UserMiniMenu: typeof import('./modules/users/components/UserMiniMenu.vue')['default']
     UserNotificationLogo: typeof import('./modules/users/components/UserNotificationLogo.vue')['default']
     UserSettingLogo: typeof import('./modules/users/components/UserSettingLogo.vue')['default']

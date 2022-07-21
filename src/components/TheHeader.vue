@@ -7,7 +7,7 @@
     flex-row w-full justify-around
   >
     <LoginButton self-center />
-    <LirestLogo height="15" m-4 p-2 />
+    <LirestLogo height="h-15" m-4 p-2 />
     <RegisterButton self-center />
   </div>
 </template>
@@ -17,4 +17,3 @@
   background-image: linear-gradient(to right, #92ffc0, #002661);
 }
 </style>
-
