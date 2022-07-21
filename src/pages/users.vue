@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 
 </script>
 
@@ -9,3 +9,11 @@
 <style lang="scss" scoped>
 
 </style>
+
+<route>
+{
+  meta: {
+    requiresAuth: true
+  }
+}
+</route>

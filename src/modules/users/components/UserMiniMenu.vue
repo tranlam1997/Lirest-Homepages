@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import authService from '@/modules/auth/auth.service'
+import { useAuthStore } from '@/modules/auth/auth.store'
 
 defineProps<{
   active: boolean
 }>()
 
+const authStore = useAuthStore()
 const router = useRouter()
 const logout = () => {
-  authService.logout()
+  authStore.logout()
   router.push('/')
 }
 </script>
@@ -20,7 +21,7 @@ const logout = () => {
     <RouterLink to="/">
       Settings
     </RouterLink>
-    <Button @click.prevent="logout">
+    <button @click.prevent="logout">
       Log out
     </button>
   </div>

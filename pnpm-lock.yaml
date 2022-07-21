@@ -25,6 +25,7 @@ specifiers:
   eslint-plugin-cypress: ^2.12.1
   https-localhost: ^4.7.1
   husky: ^8.0.1
+  jwt-decode: ^3.1.2
   lint-staged: ^12.4.1
   markdown-it-link-attributes: ^4.0.0
   markdown-it-prism: ^2.2.4
@@ -66,6 +67,7 @@ dependencies:
   '@vueuse/core': 8.4.2_vue@3.2.33
   '@vueuse/head': 0.7.6_vue@3.2.33
   axios: 0.27.2
+  jwt-decode: 3.1.2
   nprogress: 0.2.0
   pinia: 2.0.14_ytvqwwdyss532bvoq2clv4ed5m
   prism-theme-vars: 0.2.2
@@ -5244,6 +5246,10 @@ packages:
       array-includes: 3.1.4
       object.assign: 4.1.2
     dev: true
+
+  /jwt-decode/3.1.2:
+    resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
+    dev: false
 
   /kind-of/6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}

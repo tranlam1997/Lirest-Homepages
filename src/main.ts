@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import App from './App.vue'
+import { checkAuth } from './middlewares/check-auth'
+import installDirectives from './directives/click-outside'
 import generatedRoutes from '~pages'
 
 import '@unocss/reset/tailwind.css'
@@ -17,24 +20,16 @@ library.add(far)
 dom.watch()
 
 const routes = setupLayouts(generatedRoutes)
-
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(
   App,
   { routes, base: import.meta.env.BASE_URL },
   (ctx) => {
-    ctx.app.directive('click-outside', {
-      mounted(el, binding) {
-        el.clickOutsideEvent = function (event: any) {
-          if (!(el === event.target || el.contains(event.target)))
-            binding.value(event, el)
-        }
-        document.body.addEventListener('click', el.clickOutsideEvent)
-      },
-      unmounted(el) {
-        document.body.removeEventListener('click', el.clickOutsideEvent)
-      },
+    ctx.router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+      checkAuth(to, from, next)
     })
+
+    installDirectives(ctx.app)
     // install all modules under `modules/`
     ctx.app.component('font-awesome-icon', FontAwesomeIcon)
     Object.values(import.meta.globEager('./plugins/*.ts')).forEach(i => i.install?.(ctx))

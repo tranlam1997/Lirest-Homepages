@@ -1,8 +1,8 @@
 <script setup lang="ts">
+defineProps<{
+  username: string
+}>()
 const isActive = ref(false)
-
-const username = localStorage.getItem('username')
-
 const activeOrHiddenMenu = () => {
   isActive.value = !isActive.value
 }
