@@ -24,4 +24,5 @@
 <route lang="yaml">
 meta:
   layout: home
+  requiresGuest: true
 </route>

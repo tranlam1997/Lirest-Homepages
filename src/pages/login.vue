@@ -57,4 +57,5 @@ main {
 <route lang="yaml">
 meta:
   layout: auth
+  requiresGuest: true
 </route>

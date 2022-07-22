@@ -7,7 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import App from './App.vue'
-import { checkAuth } from './middlewares/check-auth'
+import { checkAuth, checkGuest } from './middlewares/check-auth'
 import installDirectives from './directives/click-outside'
 import generatedRoutes from '~pages'
 
@@ -27,6 +27,10 @@ export const createApp = ViteSSG(
   (ctx) => {
     ctx.router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
       checkAuth(to, from, next)
+    })
+
+    ctx.router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+      checkGuest(to, from, next)
     })
 
     installDirectives(ctx.app)

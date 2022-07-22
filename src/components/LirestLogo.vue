@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="w-auto ">
+  <div class="w-auto">
     <router-link to="/">
       <img
         v-if="isDark" src="../assets/img/header/Lirest-white.png" alt="Lirest logo dark mode"
