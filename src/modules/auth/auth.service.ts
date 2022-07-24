@@ -1,41 +1,49 @@
-import type { ILogin } from './auth.interface'
+import { UserInfo } from '../users/user.constant'
+import type { ILoginData, IOptions } from './auth.interface'
+import { decodeToken } from '@/common/helpers/token.helper'
+import { LocalStorage } from '@/common/helpers/local-storage.helper'
+import { ToastMessageEvent, ToastMessageType } from '@/common/messages/toast-message/messages.enum'
+import { ToastMessage } from '@/common/messages/toast-message/messages'
+import { UserRoute } from '@/routes/auth/user/user.route'
+import $api from '@/apis/api'
 
 class AuthService {
-  async login(data: ILogin) {
-    const res = await data.authStore.login(
-      data.loginData.email,
-      data.loginData.password,
-    )
+  async login(data: ILoginData, options: IOptions) {
+    const res = await $api.getAuth().login(data)
 
     if (res && res.status === 200) {
-      data.emitEvent('loginToastMessage', {
-        message: 'Successfully logged in',
-        messageType: 'success',
+      options.emit(ToastMessageEvent.LOGIN_TOAST_MESSAGE, {
+        message: ToastMessage.LoginSuccess,
+        messageType: ToastMessageType.SUCCESS,
         active: true,
       })
 
-      localStorage.setItem('userInfo', JSON.stringify({
-        username: res.data.username,
+      const tokenInfo = decodeToken(res.data.accessToken)
+
+      LocalStorage.setObjectItem(UserInfo, {
+        userId: tokenInfo.userId,
+        username: tokenInfo.username,
+        email: tokenInfo.email,
         accessToken: res.data.accessToken,
-      }))
+      })
 
       setTimeout(() => {
-        data.emitEvent('loginToastMessage', {
+        options.emit(ToastMessageEvent.LOGIN_TOAST_MESSAGE, {
           active: false,
         })
-        data.vueRouter.push('/users')
+        options.router.push(UserRoute.home(tokenInfo.userId))
       }, 3000)
 
       return res
     }
     else {
-      data.emitEvent('loginToastMessage', {
-        message: res.data.message,
-        messageType: 'error',
+      options.emit(ToastMessageEvent.LOGIN_TOAST_MESSAGE, {
+        message: res.data?.message,
+        messageType: ToastMessageType.ERROR,
         active: true,
       })
       setTimeout(() => {
-        data.emitEvent('loginToastMessage', {
+        options.emit(ToastMessageEvent.LOGIN_TOAST_MESSAGE, {
           active: false,
         })
       }, 3000)
@@ -43,7 +51,7 @@ class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('userInfo')
+    LocalStorage.removeItem(UserInfo)
   }
 }
 

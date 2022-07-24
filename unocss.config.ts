@@ -8,7 +8,7 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
-import { Rules } from './src/custom-unocss/rules'
+import { Rules } from './src/unocss-rules'
 
 export default defineConfig({
   rules: Rules(),

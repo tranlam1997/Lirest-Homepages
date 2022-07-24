@@ -43,7 +43,7 @@ useHead({
     >
       {{ message }}
     </ToastMessage>
-    <RegisterForm @toast-message="assignMessage" />
+    <RegisterForm @register-toast-message="assignMessage" />
   </main>
 </template>
 

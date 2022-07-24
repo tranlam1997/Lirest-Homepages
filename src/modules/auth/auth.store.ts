@@ -1,10 +1,11 @@
-import $api from '../api'
+import type { ILoginData, IOptions } from './auth.interface'
 import authService from './auth.service'
 
 export const useAuthStore = defineStore('authId', {
   state: () => {
     return {
-      userInfos: [],
+      userInfos: {},
+      accessToken: '',
     }
   },
 
@@ -13,8 +14,8 @@ export const useAuthStore = defineStore('authId', {
   },
 
   actions: {
-    async login(email: string, password: string) {
-      return $api.auth.login(email, password)
+    async login(data: ILoginData, options: IOptions) {
+      return authService.login(data, options)
     },
 
     async logout() {

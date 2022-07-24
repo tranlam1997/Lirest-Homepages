@@ -1,5 +1,6 @@
-import $api from '../api'
-import type { IUser } from './user.interface'
+import type { IOptions } from '../auth/auth.interface'
+import type { ICreateUserDto } from './user.interface'
+import userService from './user.service'
 
 export const useUserStore = defineStore('userId', {
   state: () => {
@@ -9,10 +10,14 @@ export const useUserStore = defineStore('userId', {
   },
 
   actions: {
-    async registerUser(data: IUser) {
-      return $api.user.createUser(data)
+    async createUser(data: ICreateUserDto, options: IOptions) {
+      return userService.createUser(data, options)
+    },
+    async getUserById(id: string) {
+      return userService.getUserById(id)
     },
   },
+
 })
 
 if (import.meta.hot)

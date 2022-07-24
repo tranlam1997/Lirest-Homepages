@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/modules/auth/auth.store'
+import { PublicRoute } from '@/routes/public/public.route'
 
 defineProps<{
   active: boolean
@@ -9,7 +10,7 @@ const authStore = useAuthStore()
 const router = useRouter()
 const logout = () => {
   authStore.logout()
-  router.push('/')
+  router.push(PublicRoute.home())
 }
 </script>
 
@@ -21,21 +22,34 @@ const logout = () => {
     <RouterLink to="/">
       Settings
     </RouterLink>
-    <button @click.prevent="logout">
+    <button w-full mt-2 mb-3 pt-2 border-t="1 black" @click.prevent="logout">
       Log out
     </button>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .user-mini-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+
+  & > a {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 2rem;
+
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+
+    &:hover {
+      background-color: #DCDCDC;
+    }
+  }
 }
 </style>

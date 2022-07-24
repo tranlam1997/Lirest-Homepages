@@ -1,42 +1,44 @@
-import type { ICreateUser } from './user.interface'
+import type { IOptions } from '../auth/auth.interface'
+import type { ICreateUserDto } from './user.interface'
+import { ToastMessageEvent, ToastMessageType } from '@/common/messages/toast-message/messages.enum'
+import { ToastMessage } from '@/common/messages/toast-message/messages'
+import { PublicRoute } from '@/routes/public/public.route'
+import $api from '@/apis/api'
 
 class UsersService {
-  async createUser(data: ICreateUser) {
-    const res = await data.userStore.registerUser({
-      firstname: data.user.firstname,
-      lastname: data.user.lastname,
-      dateOfBirth: data.user.dateOfBirth,
-      email: data.user.email,
-      phoneNumber: data.user.phoneNumber,
-      username: data.user.username,
-      password: data.user.password,
-    })
+  async createUser(data: ICreateUserDto, options: IOptions) {
+    const res = await $api.getUser().createUser(data)
 
     if (res && res.status === 201) {
-      data.emitEvent('toastMessage', {
-        message: 'Successfully registered',
-        messageType: 'success',
+      options.emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
+        message: ToastMessage.RegisterSuccess,
+        messageType: ToastMessageType.SUCCESS,
         active: true,
       })
       setTimeout(() => {
-        data.emitEvent('toastMessage', {
+        options.emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
           active: false,
         })
-        data.vueRouter.push('/login')
+        options.router.push(PublicRoute.login())
       }, 3000)
     }
     else {
-      data.emitEvent('toastMessage', {
+      options.emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
         message: res.data?.message,
-        messageType: 'error',
+        messageType: ToastMessageType.ERROR,
         active: true,
       })
       setTimeout(() => {
-        data.emitEvent('toastMessage', {
+        options.emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
           active: false,
         })
       }, 3000)
     }
+  }
+
+  async getUserById(id: string) {
+    const res = await $api.getUser().getUserById(id)
+    return res.data
   }
 }
 

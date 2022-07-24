@@ -7,7 +7,20 @@ export interface ICreateUser {
   vueRouter: any
 }
 
-export interface IUser {
+export interface IUserModel {
+  id: string
+  firstname: string
+  lastname: string
+  dateOfBirth: string
+  email: string
+  phoneNumber: string
+  username: string
+  password: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface ICreateUserDto {
   firstname: string
   lastname: string
   dateOfBirth: string
@@ -18,11 +31,11 @@ export interface IUser {
 }
 
 export interface IUserRootState {
-  users: IUser[]
+  users: IUserModel[]
 }
 
 export type IUserStore = Store<'userId', {
   users: never[]
 }, {}, {
-  registerUser(data: IUser): Promise<any>
+  registerUser(data: ICreateUserDto): Promise<any>
 }>

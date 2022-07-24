@@ -1,5 +1,5 @@
 <template>
-  <div py-10 dark:bg-black>
+  <div py-10 dark:bg-black h-full>
     <RouterView />
   </div>
 </template>

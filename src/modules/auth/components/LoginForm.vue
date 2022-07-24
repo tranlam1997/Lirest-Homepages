@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { Field, useForm } from 'vee-validate'
 import { useAuthStore } from '../auth.store'
-import authService from '../auth.service'
 import type { ILoginData } from '../auth.interface'
 import { isDark } from '@/composables'
+import type { ToastMessageEvent } from '@/common/messages/toast-message/messages.enum'
 
 const emit = defineEmits<{
-  (e: 'loginToastMessage', data: { message?: string; messageType?: string; active: boolean }): void
+  (e: ToastMessageEvent.LOGIN_TOAST_MESSAGE, data: { message?: string; messageType?: string; active: boolean }): void
 }>()
-
 const router = useRouter()
-const isDarkMode = isDark
 const authStore = useAuthStore()
+const isDarkMode = isDark
 const inputType = ref('password')
 
 const loginSchema = {
@@ -38,7 +37,10 @@ const changeInputType = (type: string) => {
 }
 
 const onSubmit = handleSubmit(async (values) => {
-  await authService.login({ loginData: values, authStore, emitEvent: emit, vueRouter: router })
+  await authStore.login({
+    email: values.email,
+    password: values.password,
+  }, { emit, router })
 })
 </script>
 

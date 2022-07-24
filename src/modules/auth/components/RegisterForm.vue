@@ -3,10 +3,10 @@ import { Field, useForm } from 'vee-validate'
 import type { IRegisterForm } from '../auth.interface'
 import { isDark } from '@/composables'
 import { useUserStore } from '@/modules/users/user.store'
-import userService from '@/modules/users/user.service'
+import type { ToastMessageEvent } from '@/common/messages/toast-message/messages.enum'
 
 const emit = defineEmits<{
-  (e: 'toastMessage', data: { message?: string; messageType?: string; active: boolean }): void
+  (e: ToastMessageEvent.REGISTER_TOAST_MESSAGE, data: { message?: string; messageType?: string; active: boolean }): void
 }>()
 const inputType = ref('password')
 const router = useRouter()
@@ -48,7 +48,8 @@ const changeInputType = (type: string) => {
 }
 
 const onSubmit = handleSubmit(async (values) => {
-  await userService.createUser({ user: values, userStore, emitEvent: emit, vueRouter: router })
+  delete values.confirmPassword
+  await userStore.createUser({ ...values }, { emit, router })
 })
 
 onMounted(() => {

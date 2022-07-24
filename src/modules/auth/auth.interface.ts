@@ -1,5 +1,3 @@
-import type { Store } from 'pinia'
-
 export interface IRegisterForm {
   firstname: string
   lastname: string
@@ -8,14 +6,12 @@ export interface IRegisterForm {
   phoneNumber: string
   username: string
   password: string
-  confirmPassword: string
+  confirmPassword?: string
 }
 
-export interface ILogin {
-  loginData: ILoginData
-  authStore: IAuthStore
-  emitEvent: any
-  vueRouter: any
+export interface IOptions {
+  emit: any
+  router: any
 }
 
 export interface ILoginData {
@@ -23,8 +19,8 @@ export interface ILoginData {
   password: string
 }
 
-export type IAuthStore = Store<'authId', {
-  userInfos: never[]
-}, {}, {
-  login(email: string, password: string): Promise<any>
-}>
+export interface IAccessTokenPayload {
+  userId: string
+  username: string
+  email: string
+}
