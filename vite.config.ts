@@ -19,13 +19,6 @@ const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 export default defineConfig({
   root: path.resolve(__dirname, '.'),
 
-  base: 'http://127.0.0.1:3333',
-
-  server: {
-    port: 3333,
-    host: '127.0.0.1',
-  },
-
   resolve: {
     alias: {
       '@/': `${path.resolve(__dirname, 'src')}/`,

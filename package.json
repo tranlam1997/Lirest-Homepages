@@ -9,7 +9,8 @@
   "main": "src/main.ts",
   "scripts": {
     "prepare": "husky install && husky add .husky/pre-commit \"lint-staged\"",
-    "build": "vite-ssg build",
+    "prebuild": "test \"$CI\" = true && npx pnpm install -r --store=node_modules/.pnpm-store || echo skiping pnpm install",
+    "build": "vite build",
     "build:clean": "rimraf dist",
     "dev": "vite --port 3333 --open",
     "lint": "eslint .",

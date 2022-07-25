@@ -11,3 +11,4 @@ node_modules
 .github/
 .husky
 .eslintcache
+package-lock.json
