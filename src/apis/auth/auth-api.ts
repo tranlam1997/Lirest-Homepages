@@ -5,4 +5,14 @@ export const AuthApi = (axios: AxiosInstance) => ({
   async login(data: { email: string; password: string }) {
     return axios.post(AuthApiUrl.login, data).catch((error: AxiosError) => error.response)
   },
+
+  async refreshToken(refreshToken: string) {
+    return axios({
+      method: 'post',
+      url: AuthApiUrl.refreshToken,
+      data: {
+        refreshToken,
+      },
+    }).catch((error: AxiosError) => error.response)
+  },
 })

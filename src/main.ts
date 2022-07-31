@@ -21,7 +21,6 @@ library.add(far)
 dom.watch()
 
 const routes = setupLayouts(generatedRoutes)
-// https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(
   App,
   { routes, base: import.meta.env.BASE_URL },
@@ -35,7 +34,6 @@ export const createApp = ViteSSG(
     })
 
     installDirectives(ctx.app)
-    // install all modules under `modules/`
     ctx.app.component('font-awesome-icon', FontAwesomeIcon)
     Object.values(import.meta.globEager('./plugins/*.ts')).forEach(i => i.install?.(ctx))
   },

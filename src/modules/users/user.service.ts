@@ -1,35 +1,38 @@
-import type { IOptions } from '../auth/auth.interface'
-import type { ICreateUserDto } from './user.interface'
+import type { AxiosResponse } from 'axios'
+import type { IUtilities } from '../auth/auth.interface'
+import type { ICreateUserDto, IUserModel } from './user.interface'
 import { ToastMessageEvent, ToastMessageType } from '@/common/messages/toast-message/messages.enum'
 import { ToastMessage } from '@/common/messages/toast-message/messages'
 import { PublicRoute } from '@/routes/public/public.route'
 import $api from '@/apis/api'
 
 class UsersService {
-  async createUser(data: ICreateUserDto, options: IOptions) {
+  async createUser(data: ICreateUserDto, utilities: IUtilities) {
     const res = await $api.getUser().createUser(data)
+    const router = useRouter()
+    const { emit } = utilities
 
     if (res && res.status === 201) {
-      options.emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
+      emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
         message: ToastMessage.RegisterSuccess,
         messageType: ToastMessageType.SUCCESS,
         active: true,
       })
       setTimeout(() => {
-        options.emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
+        emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
           active: false,
         })
-        options.router.push(PublicRoute.login())
+        router.push(PublicRoute.login())
       }, 3000)
     }
     else {
-      options.emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
+      emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
         message: res.data?.message,
         messageType: ToastMessageType.ERROR,
         active: true,
       })
       setTimeout(() => {
-        options.emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
+        emit(ToastMessageEvent.REGISTER_TOAST_MESSAGE, {
           active: false,
         })
       }, 3000)
@@ -37,8 +40,12 @@ class UsersService {
   }
 
   async getUserById(id: string) {
-    const res = await $api.getUser().getUserById(id)
-    return res.data
+    const res: AxiosResponse<IUserModel | any> = await $api.getUser().getUserById(id)
+
+    if (res && res.status === 200)
+      return res.data
+
+    return null
   }
 }
 

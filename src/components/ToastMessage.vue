@@ -17,6 +17,7 @@ onMounted(() => {
   .message-container {
     display: flex;
     justify-content: center;
+    padding: 1rem;
     align-items: center;
     position: fixed;
     width: 300px;

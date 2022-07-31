@@ -9,9 +9,9 @@ export interface IRegisterForm {
   confirmPassword?: string
 }
 
-export interface IOptions {
-  emit: any
-  router: any
+export interface IUtilities {
+  emit?: any
+  router?: any
 }
 
 export interface ILoginData {
@@ -19,8 +19,16 @@ export interface ILoginData {
   password: string
 }
 
+export interface ILoginResponseData {
+  accessToken: string
+  refreshToken: string
+}
+
+export interface IRefreshTokenResponseData extends ILoginResponseData {}
+
 export interface IAccessTokenPayload {
   userId: string
   username: string
   email: string
+  refreshTokenExpiresIn: number
 }

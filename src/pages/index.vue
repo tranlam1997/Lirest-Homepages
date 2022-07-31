@@ -2,9 +2,7 @@
 </script>
 
 <template>
-  <div sticky top-50>
-    <NavBarSticky class="w-1/5" flex-col items-end absolute right-20 />
-  </div>
+  <NavBarSticky top-50 nav-style="w-1/5 flex-col items-end absolute right-20" />
   <TheHeader />
   <nav flex-row class="middle">
     <NavBarMain />

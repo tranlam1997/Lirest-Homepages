@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { Field, useForm } from 'vee-validate'
+import { useForm } from 'vee-validate'
 import { useAuthStore } from '../auth.store'
 import type { ILoginData } from '../auth.interface'
-import { isDark } from '@/composables'
 import type { ToastMessageEvent } from '@/common/messages/toast-message/messages.enum'
+import { Emitter } from 'mitt';
+import { MittEvents } from '@/plugins/mitt';
 
 const emit = defineEmits<{
   (e: ToastMessageEvent.LOGIN_TOAST_MESSAGE, data: { message?: string; messageType?: string; active: boolean }): void
 }>()
 const router = useRouter()
 const authStore = useAuthStore()
-const isDarkMode = isDark
 const inputType = ref('password')
+const emitter = <Emitter<MittEvents>>inject('emitter')
+
 
 const loginSchema = {
   email: 'required|email',
@@ -32,9 +34,9 @@ const isFilledOut = () => {
   return Object.keys(values).every(key => values[key as keyof typeof values])
 }
 
-const changeInputType = (type: string) => {
+emitter.on('changeInputType', (type: string) => {
   inputType.value = type
-}
+})
 
 const onSubmit = handleSubmit(async (values) => {
   await authStore.login({
@@ -47,22 +49,20 @@ const onSubmit = handleSubmit(async (values) => {
 <template>
   <form flex-col text-dark dark:text-white items-center @submit="onSubmit">
     <div class="form-element" flex-col justify-items-start>
-      <label for="email">Username/Email:</label>
-      <Field type="text" name="email" input-format />
-      <i v-if="isDarkMode" class="dark" />
-      <i v-if="!isDarkMode" class="light" />
-      <span class="error-message">{{ errors.email }}</span>
+      <RegisterInput flex-col justify-items-start class="ct-basis-45" label-content="Email:" label-name="email" :error-detail="errors.email || ''">
+        <template #input>
+          <InputText input-name="email" input-style="input-format" />
+        </template>
+      </RegisterInput>
     </div>
 
     <div class="form-element" flex-col>
-      <label for="password">Password:</label>
-      <div relative flex-col>
-        <Field w-full :type="inputType" name="password" input-format />
-        <i v-if="isDarkMode" class="dark" />
-        <i v-if="!isDarkMode" class="light" />
-        <ContentToggler bg-white dark:bg-gray-800 p-1 px-2 absolute top-0 right-0 @toggle-content="changeInputType" />
-      </div>
-      <span class="error-message">{{ errors.password }}</span>
+      <RegisterInput relative flex-col justify-items-start class="ct-basis-45" label-content="Password:" label-name="password" :error-detail="errors.password || ''">
+        <template #input>
+          <BaseInput input-name="password" :input-type="inputType" input-style="input-format" />
+        </template>
+        <ContentToggler bg-white dark:bg-gray-800 absolute top-0 right-0 />
+      </RegisterInput>
     </div>
 
     <div flex-row justify-between class="w-1/2">

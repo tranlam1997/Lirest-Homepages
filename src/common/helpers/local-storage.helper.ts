@@ -15,6 +15,15 @@ export const LocalStorage = {
     localStorage.setItem(key, JSON.stringify(value))
   },
 
+  updateObjectItem: (key: string, data: Record<string, any>) => {
+    const currentValue = LocalStorage.getObjectItem(key)
+    Object.keys(data).forEach((key) => {
+      currentValue[key] = data[key]
+    })
+    console.log('🚀 ~ file: local-storage.helper.ts ~ line 20 ~ currentValue', currentValue)
+    LocalStorage.setObjectItem(key, currentValue)
+  },
+
   removeItem: (key: string) => {
     localStorage.removeItem(key)
   },

@@ -1,17 +1,17 @@
-import type { IOptions } from '../auth/auth.interface'
-import type { ICreateUserDto } from './user.interface'
+import type { IUtilities } from '../auth/auth.interface'
+import type { ICreateUserDto, IUserInfo } from './user.interface'
 import userService from './user.service'
 
 export const useUserStore = defineStore('userId', {
   state: () => {
     return {
-      users: [],
+      userInfo: {} as IUserInfo,
     }
   },
 
   actions: {
-    async createUser(data: ICreateUserDto, options: IOptions) {
-      return userService.createUser(data, options)
+    async createUser(data: ICreateUserDto, utilities: IUtilities) {
+      return userService.createUser(data, utilities)
     },
     async getUserById(id: string) {
       return userService.getUserById(id)

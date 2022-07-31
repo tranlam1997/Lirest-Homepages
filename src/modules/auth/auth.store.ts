@@ -1,11 +1,9 @@
-import type { ILoginData, IOptions } from './auth.interface'
+import type { ILoginData, IUtilities } from './auth.interface'
 import authService from './auth.service'
 
 export const useAuthStore = defineStore('authId', {
   state: () => {
     return {
-      userInfos: {},
-      accessToken: '',
     }
   },
 
@@ -14,8 +12,12 @@ export const useAuthStore = defineStore('authId', {
   },
 
   actions: {
-    async login(data: ILoginData, options: IOptions) {
+    async login(data: ILoginData, options: IUtilities) {
       return authService.login(data, options)
+    },
+
+    async refreshToken(refreshToken: string) {
+      return authService.refreshToken(refreshToken)
     },
 
     async logout() {

@@ -6,6 +6,7 @@ import { AuthApi } from './auth/auth-api'
 import { UserApi } from './user/user-api'
 import { LocalStorage } from '@/common/helpers/local-storage.helper'
 import { UserInfo } from '@/modules/users/user.constant'
+import { useAuthStore } from '@/modules/auth/auth.store'
 
 class Api {
   private readonly auth: IAuthApi
@@ -26,11 +27,29 @@ class Api {
         return config
       },
     )
-    // this.axiosInstance.interceptors.response.use(
-    //   (error: any) => {
-    //     const originalRequest = error.config;
-    //   }
-    // )
+    this.axiosInstance.interceptors.response.use((response) => {
+      return response
+    },
+    async (error: any) => {
+      const authStore = useAuthStore()
+      const router = useRouter()
+      const originalRequest = error.config
+      if (error.response && error.response.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true
+        const { refreshToken } = LocalStorage.getObjectItem(UserInfo)
+        const accessToken = await authStore.refreshToken(refreshToken)
+        if (!accessToken) {
+          authStore.logout()
+          router.push('/login')
+          return Promise.reject(error)
+        }
+        axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`
+        return this.axiosInstance(originalRequest)
+      }
+
+      return Promise.reject(error)
+    },
+    )
     this.auth = AuthApi(this.axiosInstance)
     this.user = UserApi(this.axiosInstance)
   }

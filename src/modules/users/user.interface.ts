@@ -1,12 +1,3 @@
-import type { Store } from 'pinia'
-
-export interface ICreateUser {
-  user: IUser
-  userStore: IUserStore
-  emitEvent: any
-  vueRouter: any
-}
-
 export interface IUserModel {
   id: string
   firstname: string
@@ -18,6 +9,13 @@ export interface IUserModel {
   password: string
   createdAt: string
   updatedAt: string
+  refreshToken?: {
+    id: string
+    token: string
+    expiresIn: number
+    createdAt: string
+    updatedAt: string
+  }
 }
 
 export interface ICreateUserDto {
@@ -30,12 +28,8 @@ export interface ICreateUserDto {
   password: string
 }
 
-export interface IUserRootState {
-  users: IUserModel[]
+export interface IUserInfo {
+  userId: string
+  username: string
+  email: string
 }
-
-export type IUserStore = Store<'userId', {
-  users: never[]
-}, {}, {
-  registerUser(data: ICreateUserDto): Promise<any>
-}>

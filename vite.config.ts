@@ -33,15 +33,12 @@ export default defineConfig({
       reactivityTransform: true,
     }),
 
-    // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ['vue', 'md'],
     }),
 
-    // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts(),
 
-    // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
         'vue',
@@ -56,7 +53,6 @@ export default defineConfig({
       dts: 'src/auto-imports.d.ts',
     }),
 
-    // https://github.com/antfu/unplugin-vue-components
     Components({
       // allow auto load markdown components under `./src/components/`
       dirs: ['./src/**/components'],
@@ -67,12 +63,8 @@ export default defineConfig({
       dts: 'src/components.d.ts',
     }),
 
-    // https://github.com/antfu/unocss
-    // see unocss.config.ts for config
     Unocss(),
 
-    // https://github.com/antfu/vite-plugin-md
-    // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
     Markdown({
       wrapperClasses: markdownWrapperClasses,
       headEnabled: true,
@@ -89,7 +81,6 @@ export default defineConfig({
       },
     }),
 
-    // https://github.com/antfu/vite-plugin-pwa
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
@@ -118,26 +109,21 @@ export default defineConfig({
       },
     }),
 
-    // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
       include: [path.resolve(__dirname, 'locales/**')],
     }),
 
-    // https://github.com/antfu/vite-plugin-inspect
-    // Visit http://localhost:3333/__inspect/ to see the inspector
     Inspect(),
   ],
 
-  // https://github.com/antfu/vite-ssg
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
     onFinished() { generateSitemap() },
   },
 
-  // https://github.com/vitest-dev/vitest
   test: {
     include: ['test/**/*.test.ts'],
     environment: 'jsdom',

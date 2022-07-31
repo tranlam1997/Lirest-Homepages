@@ -1,4 +1,7 @@
 <script setup lang="ts">
+defineProps<{
+  navStyle: string
+}>()
 const isSelectLocaleActive = ref(false)
 
 const changeSelectLocaleStatus = () => {
@@ -10,16 +13,18 @@ const hiddenInputSelectedLocale = () => {
 </script>
 
 <template>
-  <nav text-xl gap-3>
-    <IconHome />
-    <IconToggleDarkMode />
-    <div v-click-outside="() => { hiddenInputSelectedLocale() }" flex-row justify-end gap-1 w-full>
-      <InputSelectLocale :active="isSelectLocaleActive" />
-      <IconLocale @click.prevent="changeSelectLocaleStatus()" />
-    </div>
-    <IconAbout />
-    <IconGithub />
-  </nav>
+  <div sticky>
+    <nav :class="navStyle" text-xl gap-3>
+      <IconHome />
+      <IconToggleDarkMode />
+      <div v-click-outside="() => { hiddenInputSelectedLocale() }" flex-row justify-end gap-1 w-full>
+        <InputSelectLocale :active="isSelectLocaleActive" />
+        <IconLocale @click.prevent="changeSelectLocaleStatus()" />
+      </div>
+      <IconAbout />
+      <IconGithub />
+    </nav>
+  </div>
 </template>
 
 <style scoped lang="scss">
