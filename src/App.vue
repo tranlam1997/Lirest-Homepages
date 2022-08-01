@@ -24,21 +24,8 @@ useHead({
 </script>
 
 <template>
-  <RouterView v-slot="{ Component, route }">
-    <Transition name="slide">
-      <keep-alive>
-        <Component :is="Component" :key="route" />
-      </keep-alive>
-    </Transition>
-  </RouterView>
+  <RouterView />
 </template>
 
 <style>
-.slide-enter-active, .slide-leave-active {
-  transition: all 0.5s ease-in-out;
-}
-
-.slide-enter-from, .slide-leave-to {
-   opacity: 0;
-}
 </style>

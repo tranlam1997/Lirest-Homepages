@@ -5,6 +5,8 @@ import { UserInfo } from '@/modules/users/user.constant'
 import { MittEvents } from '@/plugins/mitt';
 import { Emitter } from 'mitt';
 
+
+console.log('main user page')
 const userInfo = LocalStorage.getObjectItem<IUserInfoLocalStorage>(UserInfo)
 const emitter = <Emitter<MittEvents>>inject('emitter')
 const messageType = ref('')
@@ -29,7 +31,9 @@ emitter.on('toastMessage', (value) => {
     {{ message }}
   </ToastMessage>
   <UserHeader ct-user-header-box-shadow :username="userInfo.username" />
+  <Suspense>
   <router-view />
+  </Suspense>
 </template>
 
 <style lang="scss" scoped>

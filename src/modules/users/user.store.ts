@@ -1,11 +1,11 @@
 import type { IUtilities } from '../auth/auth.interface'
-import type { ICreateUserDto, IUserInfo } from './user.interface'
+import type { ICreateUserDto, IUserModel } from './user.interface'
 import userService from './user.service'
 
 export const useUserStore = defineStore('userId', {
   state: () => {
     return {
-      userInfo: {} as IUserInfo,
+      userInfo: {} as IUserModel,
     }
   },
 

@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { useUserStore } from '../user.store.js'
+
 import { MittEvents } from '@/plugins/mitt';
 import { Emitter } from 'mitt';
-import { useUserStore } from '../user.store'
 
 const userData = ref()
 const route = useRoute()
@@ -9,24 +10,30 @@ const userStore = useUserStore()
 const emitter = <Emitter<MittEvents>> inject('emitter')
 
 userData.value = await userStore.getUserById(route.params.id as string)
+onBeforeUpdate(() => {
+  console.log('hahahahah ON BEFORE UPDATE')
 
+})
 onBeforeMount(() => {
+  console.log('hahahahah ON BEFORE MOUNT')
   if(!userData.value) {
     emitter.emit('toastMessage', {
       message: 'User not found',
       messageType: 'error',
       active: true,
     })
+  } else {
+    userStore.$patch({
+      userInfo: userData.value
+    })
   }
 })
-
-watch(() => route.params.id, async newId => userData.value = await userStore.getUserById(newId as string))
 </script>
 
 <template>
   <form v-if="userData" flex-col gap-5>
     <UserInput label-name="firstname" label-content="First Name:" :value="userData.firstname">
-      <InputText input-name="firstname" input-style="input-format"/>
+      <InputText input-name="firstname" input-style="input-format" />
     </UserInput>
     <UserInput label-name="lastname" label-content="Last Name:" :value="userData.lastname">
       <InputText input-name="firstname" input-style="input-format" />
@@ -41,7 +48,7 @@ watch(() => route.params.id, async newId => userData.value = await userStore.get
       <InputText input-name="firstname" input-style="input-format" />
     </UserInput>
     <UserInput label-name="username" label-content="Username:" :value="userData.username">
-      <InputText input-name="firstname" input-style="input-format"/>
+      <InputText input-name="firstname" input-style="input-format" />
     </UserInput>
     <UserInput label-name="password" label-content="Password:" :value="userData.password">
       <InputText input-name="firstname" input-style="input-format" />

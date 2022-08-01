@@ -29,6 +29,5 @@ export interface IRefreshTokenResponseData extends ILoginResponseData {}
 export interface IAccessTokenPayload {
   userId: string
   username: string
-  email: string
   refreshTokenExpiresIn: number
 }

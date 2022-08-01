@@ -27,9 +27,3 @@ export interface ICreateUserDto {
   username: string
   password: string
 }
-
-export interface IUserInfo {
-  userId: string
-  username: string
-  email: string
-}

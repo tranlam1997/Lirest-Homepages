@@ -2,9 +2,7 @@
 </script>
 
 <template>
-  <Suspense>
-    <UserForm class="w-1/2" />
-  </Suspense>
+  <UserForm class="w-1/2" />
 </template>
 
 <style scoped>

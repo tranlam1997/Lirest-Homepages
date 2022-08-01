@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { MittEvents } from '@/plugins/mitt';
 import type { Emitter } from 'mitt'
-import type { MittEvents } from './interfaces/content-togger.interface'
 
 const active = ref(true)
 const emitter = <Emitter<MittEvents>> inject('emitter')

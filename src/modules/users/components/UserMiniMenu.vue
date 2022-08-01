@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { useUserStore } from '../user.store'
 import { useAuthStore } from '@/modules/auth/auth.store'
 import { PublicRoute } from '@/routes/public/public.route'
 
 defineProps<{
   active: boolean
-  id: string
 }>()
 
 const authStore = useAuthStore()
-const userStore = useUserStore()
+const route = useRoute()
 const router = useRouter()
 const logout = () => {
   authStore.logout()
@@ -19,7 +17,7 @@ const logout = () => {
 
 <template>
   <div v-if="active" class="user-mini-menu" dark:text-dark>
-    <RouterLink :to="`/users/${userStore.userId}/profile`">
+    <RouterLink :to="`/users/${route.params.id}/profile`">
       Profile
     </RouterLink>
     <RouterLink to="/">

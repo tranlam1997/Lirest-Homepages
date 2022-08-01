@@ -22,7 +22,6 @@ onMounted(() => {
     position: fixed;
     width: 300px;
     height: 50px;
-    border-radius: 10px;
     opacity: 0.9;
     transition: all 1s ease-in-out;
   }

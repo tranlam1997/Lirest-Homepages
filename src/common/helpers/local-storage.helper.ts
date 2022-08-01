@@ -20,7 +20,6 @@ export const LocalStorage = {
     Object.keys(data).forEach((key) => {
       currentValue[key] = data[key]
     })
-    console.log('🚀 ~ file: local-storage.helper.ts ~ line 20 ~ currentValue', currentValue)
     LocalStorage.setObjectItem(key, currentValue)
   },
 

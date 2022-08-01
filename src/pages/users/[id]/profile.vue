@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const route = useRoute()
+console.log(route.params, 'PROFILE PAGE')
 </script>
 
 <template>
