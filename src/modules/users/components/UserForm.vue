@@ -10,12 +10,7 @@ const userStore = useUserStore()
 const emitter = <Emitter<MittEvents>> inject('emitter')
 
 userData.value = await userStore.getUserById(route.params.id as string)
-onBeforeUpdate(() => {
-  console.log('hahahahah ON BEFORE UPDATE')
-
-})
 onBeforeMount(() => {
-  console.log('hahahahah ON BEFORE MOUNT')
   if(!userData.value) {
     emitter.emit('toastMessage', {
       message: 'User not found',

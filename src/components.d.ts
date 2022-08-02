@@ -46,9 +46,12 @@ declare module '@vue/runtime-core' {
     UserHeader: typeof import('./modules/users/components/UserHeader.vue')['default']
     UserInput: typeof import('./modules/users/components/UserInput.vue')['default']
     UserMiniMenu: typeof import('./modules/users/components/UserMiniMenu.vue')['default']
+    UserNavTabs: typeof import('./modules/users/components/UserNavTabs.vue')['default']
     UserNotificationLogo: typeof import('./modules/users/components/UserNotificationLogo.vue')['default']
     UserProfile: typeof import('./modules/users/components/UserProfile.vue')['default']
     UserSettingLogo: typeof import('./modules/users/components/UserSettingLogo.vue')['default']
+    UserTab: typeof import('./modules/users/components/UserTab.vue')['default']
+    UserTabs: typeof import('./modules/users/components/UserTabs.vue')['default']
   }
 }
 
