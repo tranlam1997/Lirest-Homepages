@@ -1,14 +1,16 @@
 <script setup lang="ts">
-const route = useRoute()
-console.log(route.params, 'PROFILE PAGE')
 </script>
 
 <template>
-  <UserProfile />
+  <div>
+    <div class="w-1/2" flex-col>
+      <UserNavTabs self-stretch />
+      <UserProfile class="p-10" />
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
 </style>
 
 <route lang="yaml">

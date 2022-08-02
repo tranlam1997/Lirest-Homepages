@@ -6,7 +6,6 @@ import { MittEvents } from '@/plugins/mitt';
 import { Emitter } from 'mitt';
 
 
-console.log('main user page')
 const userInfo = LocalStorage.getObjectItem<IUserInfoLocalStorage>(UserInfo)
 const emitter = <Emitter<MittEvents>>inject('emitter')
 const messageType = ref('')
@@ -24,23 +23,23 @@ emitter.on('toastMessage', (value) => {
 </script>
 
 <template>
-  <ToastMessage
-    :class="messageType" :message-position="{ left: '-500px', top: '150px' }"
-    :style="toastActive ? { transform: 'translateX(500px)' } : ''"
-  >
-    {{ message }}
-  </ToastMessage>
-  <UserHeader ct-user-header-box-shadow :username="userInfo.username" />
-  <Suspense>
-  <router-view />
-  </Suspense>
+  <div>
+    <ToastMessage :class="messageType" :message-position="{ left: '-500px', top: '150px' }"
+      :style="toastActive ? { transform: 'translateX(500px)' } : ''">
+      {{ message }}
+    </ToastMessage>
+    <UserHeader ct-user-header-box-shadow :username="userInfo.username" />
+    <Suspense>
+      <router-view />
+    </Suspense>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 </style>
 
 <route lang="yaml">
-meta:
-  layout: user
-  requiresAuth: true
+  meta:
+    layout: user
+    requiresAuth: true
 </route>

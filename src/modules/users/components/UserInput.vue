@@ -8,11 +8,11 @@ defineProps<{
 </script>
 
 <template>
-  <div border="1 red" flex-row gap-4>
-    <BaseLabel flex-1 self-center :name="labelName" :content="labelContent" />
+  <div flex-row gap-4>
+    <BaseLabel class="basis-1/5" text-start self-center :name="labelName" :content="labelContent" />
     <div flex-1 flex-col>
-      <p self-start v-if="false">{{ value }}</p>
-      <slot v-if="true" />
+      <p self-start v-if="true">{{ value }}</p>
+      <slot v-if="false" />
     </div>
   </div>
 </template>
