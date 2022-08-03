@@ -3,13 +3,11 @@ import UserNotificationLogo from './UserNotificationLogo.vue'
 defineProps<{
   username: string
 }>()
-
-const userId = useRoute().params.id
 </script>
 
 <template>
   <div class="user-header" flex-row justify-between items-center gap-10 bg-white dark:bg-dark>
-    <LirestLogo height="h-10" :toUrl="`/users/${userId}`" />
+    <LirestLogo height="h-10" />
     <div flex-row gap-12>
       <div flex-row gap-2>
         <span self-center>{{ `Hi, ${username}` }}</span>

@@ -3,7 +3,7 @@
 
 <template>
   <div class="header" flex-row justify-center items-center relative w-full>
-    <LirestLogo height="h-15" toUrl="/" />
+    <LirestLogo height="h-15" />
     <div flex-row gap-2 absolute right-10 top-10>
       <LoginButton />
       <RegisterButton />
