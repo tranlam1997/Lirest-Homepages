@@ -1,0 +1,15 @@
+.tab {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+
+  &:before {
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    left: 0;
+    border-top: 4px solid rgb(211, 196, 170);
+    width: 90%;
+  }
+}

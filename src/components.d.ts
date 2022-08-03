@@ -51,7 +51,6 @@ declare module '@vue/runtime-core' {
     UserProfile: typeof import('./modules/users/components/UserProfile.vue')['default']
     UserSettingLogo: typeof import('./modules/users/components/UserSettingLogo.vue')['default']
     UserTab: typeof import('./modules/users/components/UserTab.vue')['default']
-    UserTabs: typeof import('./modules/users/components/UserTabs.vue')['default']
   }
 }
 

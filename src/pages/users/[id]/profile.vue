@@ -4,7 +4,7 @@
 <template>
   <div>
     <div class="w-1/2" flex-col>
-      <UserNavTabs self-stretch />
+      <UserNavTabs self-stretch tab-name="Overview" />
       <UserProfile class="p-10" />
     </div>
   </div>
