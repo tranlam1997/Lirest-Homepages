@@ -4,7 +4,7 @@
 <template>
   <div class="box">
     <div flex-row justify-between class="box-inner">
-      <UserForm class="w-1/2" />
+      <UserForm class="basis-3/4" />
       <UserAvatar />
     </div>
   </div>
@@ -17,7 +17,6 @@ $color-alpha: #4d4c4b;
 
 .box {
   position: relative;
-  background-color: rgba(#000, 0.5);
   padding: 5px;
   border: 2px solid $color-alpha;
 
@@ -46,7 +45,7 @@ $color-alpha: #4d4c4b;
   .box-inner {
     position: relative;
     border: 2px solid $color-alpha;
-    padding: 40px;
+    padding: 50px;
 
     &:before,
     &:after {

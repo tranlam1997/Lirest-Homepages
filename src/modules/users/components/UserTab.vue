@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import { isDark } from '@/composables'
 defineProps<{
   content: string
   symbol: string
   isTabActive: boolean
 }>()
+const isDarkMode = isDark
 </script>
 
 <template>
-  <div flex-row gap-2 cursor-pointer hover:bg-gray-800 p-3 :class="isTabActive ? 'tab' : ''">
+  <div flex-row gap-2 cursor-pointer hover:bg-gray-400 hover:text-gray-100 dark:hover:bg-green-700 p-3 :class="{ 'tab': isTabActive, 'dark-tab': isDarkMode }">
     <div self-center :class="symbol" />
     <p>{{ content }}</p>
   </div>

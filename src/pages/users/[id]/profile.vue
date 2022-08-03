@@ -3,9 +3,9 @@
 
 <template>
   <div>
-    <div class="w-1/2" flex-col>
+    <div class="w-2/3" flex-col relative top-10 m-auto>
       <UserNavTabs self-stretch tab-name="Overview" />
-      <UserProfile class="p-10" />
+      <UserProfile p-30 />
     </div>
   </div>
 </template>

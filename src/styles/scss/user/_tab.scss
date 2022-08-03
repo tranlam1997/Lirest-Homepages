@@ -6,10 +6,16 @@
     content: '';
     margin: auto;
     position: absolute;
-    top: 5px;
+    top: 0;
     right: 0;
     left: 0;
-    border-top: 4px solid rgb(211, 196, 170);
-    width: 90%;
+    border-top: 3px solid rgb(0, 0, 0);
+    width: 100%;
+  }
+}
+
+.dark-tab {
+  &:before {
+    border-top: 3px solid rgb(255, 255, 255);
   }
 }

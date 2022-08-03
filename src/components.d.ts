@@ -41,7 +41,7 @@ declare module '@vue/runtime-core' {
     TheHeader: typeof import('./components/TheHeader.vue')['default']
     ToastMessage: typeof import('./components/ToastMessage.vue')['default']
     UserAvatar: typeof import('./modules/users/components/UserAvatar.vue')['default']
-    UserEditButton: typeof import('./modules/users/components/UserEditButton.vue')['default']
+    UserButton: typeof import('./modules/users/components/UserButton.vue')['default']
     UserForm: typeof import('./modules/users/components/UserForm.vue')['default']
     UserHeader: typeof import('./modules/users/components/UserHeader.vue')['default']
     UserInput: typeof import('./modules/users/components/UserInput.vue')['default']

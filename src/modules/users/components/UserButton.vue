@@ -3,9 +3,10 @@
 </script>
 
 <template>
-  <div />
+  <BaseButton btn-user type="button">
+  <slot />
+  </BaseButton>
 </template>
 
 <style scoped>
-
 </style>

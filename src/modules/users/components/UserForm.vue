@@ -31,22 +31,19 @@ onBeforeMount(() => {
       <InputText input-name="firstname" input-style="input-format" />
     </UserInput>
     <UserInput label-name="lastname" label-content="Last Name:" :value="userData.lastname">
-      <InputText input-name="firstname" input-style="input-format" />
+      <InputText input-name="lastname" input-style="input-format" />
     </UserInput>
     <UserInput label-name="dateOfBirth" label-content="Date Of Birth:" :value="userData.dateOfBirth">
-      <InputText input-name="firstname" input-style="input-format" />
+      <InputText input-name="dateOfBirth" input-style="input-format" />
     </UserInput>
     <UserInput label-name="phoneNumber" label-content="Phone Number:" :value="userData.phoneNumber">
-      <InputText input-name="firstname" input-style="input-format" />
+      <InputText input-name="phoneNumber" input-style="input-format" />
     </UserInput>
     <UserInput label-name="email" label-content="Email:" :value="userData.email">
-      <InputText input-name="firstname" input-style="input-format" />
+      <InputText input-name="email" input-style="input-format" />
     </UserInput>
     <UserInput label-name="username" label-content="Username:" :value="userData.username">
-      <InputText input-name="firstname" input-style="input-format" />
-    </UserInput>
-    <UserInput label-name="password" label-content="Password:" :value="userData.password">
-      <InputText input-name="firstname" input-style="input-format" />
+      <InputText input-name="username" input-style="input-format" />
     </UserInput>
   </form>
 </template>
