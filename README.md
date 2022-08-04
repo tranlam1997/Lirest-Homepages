@@ -5,17 +5,17 @@
 ![Typescript](https://link.storjshare.io/s/judy4ney5nwuzk6nm7xdpza4aevq/lirest-webapp-images/typescript.png?wrap=0)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/46c00e86-c275-47a2-8a2a-ba72e0c39860/deploy-status)](https://app.netlify.com/sites/lirest/deploys)
-![Package version](https://img.shields.io/github/package-json/v/tranlam1997/Lirest-FE)
-![Repo size](https://img.shields.io/github/repo-size/tranlam1997/Lirest-FE)
+![Package version](https://img.shields.io/github/package-json/v/tranlam1997/Lirest-Homepages)
+![Repo size](https://img.shields.io/github/repo-size/tranlam1997/Lirest-Homepages)
 ![npm](https://img.shields.io/npm/v/npm)
-![Downloads](https://img.shields.io/github/downloads/tranlam1997/Lirest-FE/total)
-![Contributors](https://img.shields.io/github/contributors/tranlam1997/Lirest-FE)
+![Downloads](https://img.shields.io/github/downloads/tranlam1997/Lirest-Homepages/total)
+![Contributors](https://img.shields.io/github/contributors/tranlam1997/Lirest-Homepages)
 ![Sponsors](https://img.shields.io/github/sponsors/tranlam1997)
-![License](https://img.shields.io/github/license/tranlam1997/Lirest-FE)
+![License](https://img.shields.io/github/license/tranlam1997/Lirest-Homepages)
 ![Followers](https://img.shields.io/github/followers/tranlam1997?style=social)
-![Forks](https://img.shields.io/github/forks/tranlam1997/Lirest-FE?style=social)
-![Stars](https://img.shields.io/github/stars/tranlam1997/Lirest-FE?style=social)
-![Watchers](https://img.shields.io/github/watchers/tranlam1997/Lirest-FE?style=social)
+![Forks](https://img.shields.io/github/forks/tranlam1997/Lirest-Homepages?style=social)
+![Stars](https://img.shields.io/github/stars/tranlam1997/Lirest-Homepages?style=social)
+![Watchers](https://img.shields.io/github/watchers/tranlam1997/Lirest-Homepages?style=social)
 
 <br>
 
@@ -53,8 +53,8 @@ Lirest uses a number of open source projects to work properly:
 Clone the repo to your local
 
 ```sh
-# Or git clone git@github.com:tranlam1997/Lirest-FE.git if you have SSH installed.
-git clone https://github.com/tranlam1997/Lirest-FE.git
+# Or git clone git@github.com:tranlam1997/Lirest-Homepages.git if you have SSH installed.
+git clone https://github.com/tranlam1997/Lirest-Homepages.git
 cd Lirest-FE
 ```
 Install dependencies
