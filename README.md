@@ -1,22 +1,21 @@
 # LIREST
 ## _The knownledge platform for every nerds, anything about book and beyond that_..
 
-![VueJS(https://link.storjshare.io/s/jxk3g34pj6scf7pfhbojczi22wza/lirest-webapp-images/vue.png?wrap=0)
-![Typescript(https://link.storjshare.io/s/judy4ney5nwuzk6nm7xdpza4aevq/lirest-webapp-images/typescript.png?wrap=0)
+![VueJS](https://link.storjshare.io/s/jxk3g34pj6scf7pfhbojczi22wza/lirest-webapp-images/vue.png?wrap=0)
+![Typescript](https://link.storjshare.io/s/judy4ney5nwuzk6nm7xdpza4aevq/lirest-webapp-images/typescript.png?wrap=0)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/46c00e86-c275-47a2-8a2a-ba72e0c39860/deploy-status)](https://app.netlify.com/sites/lirest/deploys)
-![Package version](https://img.shields.io/github/package-json/v/tranlam1997/Lirest-BE)
-![Repo size](https://img.shields.io/github/repo-size/tranlam1997/Lirest-BE)
+![Package version](https://img.shields.io/github/package-json/v/tranlam1997/Lirest-FE)
+![Repo size](https://img.shields.io/github/repo-size/tranlam1997/Lirest-FE)
 ![npm](https://img.shields.io/npm/v/npm)
-![node](https://img.shields.io/node/v/npm)
-![Downloads](https://img.shields.io/github/downloads/tranlam1997/Lirest-BE/total)
-![Contributors](https://img.shields.io/github/contributors/tranlam1997/Lirest-BE)
+![Downloads](https://img.shields.io/github/downloads/tranlam1997/Lirest-FE/total)
+![Contributors](https://img.shields.io/github/contributors/tranlam1997/Lirest-FE)
 ![Sponsors](https://img.shields.io/github/sponsors/tranlam1997)
-![License](https://img.shields.io/github/license/tranlam1997/Lirest-BE)
+![License](https://img.shields.io/github/license/tranlam1997/Lirest-FE)
 ![Followers](https://img.shields.io/github/followers/tranlam1997?style=social)
-![Forks](https://img.shields.io/github/forks/tranlam1997/Lirest-BE?style=social)
-![Stars](https://img.shields.io/github/stars/tranlam1997/Lirest-BE?style=social)
-![Watchers](https://img.shields.io/github/watchers/tranlam1997/Lirest-BE?style=social)
+![Forks](https://img.shields.io/github/forks/tranlam1997/Lirest-FE?style=social)
+![Stars](https://img.shields.io/github/stars/tranlam1997/Lirest-FE?style=social)
+![Watchers](https://img.shields.io/github/watchers/tranlam1997/Lirest-FE?style=social)
 
 <br>
 
