@@ -5,6 +5,7 @@
 [![TypeOrm](https://link.storjshare.io/s/jw4pf4oahgbohvahx6p35w335foq/lirest-webapp-images/typeorm.png?wrap=0)](https://nodesource.com/products/nsolid)
 [![Typescript](https://link.storjshare.io/s/judy4ney5nwuzk6nm7xdpza4aevq/lirest-webapp-images/typescript.png?wrap=0)](https://nodesource.com/products/nsolid)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/46c00e86-c275-47a2-8a2a-ba72e0c39860/deploy-status)](https://app.netlify.com/sites/lirest/deploys)
 ![Package version](https://img.shields.io/github/package-json/v/tranlam1997/Lirest-BE)
 ![Repo size](https://img.shields.io/github/repo-size/tranlam1997/Lirest-BE)
 ![npm](https://img.shields.io/npm/v/npm)
