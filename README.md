@@ -78,11 +78,10 @@ We try to make sure Dashboard works well in the latest versions of all major bro
 
 <img src="https://justboil.me/images/browsers-svg/chrome.svg" width="64" height="64" alt="Chrome"> <img src="https://justboil.me/images/browsers-svg/firefox.svg" width="64" height="64" alt="Firefox"> <img src="https://justboil.me/images/browsers-svg/edge.svg" width="64" height="64" alt="Edge"> <img src="https://justboil.me/images/browsers-svg/safari.svg" width="64" height="64" alt="Safari"> <img src="https://justboil.me/images/browsers-svg/opera.svg" width="64" height="64" alt="Opera">
 
-## License
+## License MIT
 ![FQÉT](https://link.storjshare.io/s/jvaumpaymqlug2yjt6nc4w6nq4ha/lirest-webapp-images/personal-logo-2.png?wrap=0)
 Copyright &copy; 2022-2023 FQÉT Inc.
 
-MIT
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
