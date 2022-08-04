@@ -75,6 +75,7 @@ pnpm run build
 
 ## Browser Support
 We try to make sure Dashboard works well in the latest versions of all major browsers
+
 <img src="https://justboil.me/images/browsers-svg/chrome.svg" width="64" height="64" alt="Chrome"> 
 <img src="https://justboil.me/images/browsers-svg/firefox.svg" width="64" height="64" alt="Firefox"> 
 <img src="https://justboil.me/images/browsers-svg/edge.svg" width="64" height="64" alt="Edge"> 
