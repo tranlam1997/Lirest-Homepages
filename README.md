@@ -1,9 +1,8 @@
 # LIREST
 ## _The knownledge platform for every nerds, anything about book and beyond that_..
 
-[![VueJS](https://link.storjshare.io/s/ju5txqiudtdxkmafarr4gn7kky3q/lirest-webapp-images/express.png?wrap=0)(https://nodesource.com/products/nsolid)
-[![TypeOrm](https://link.storjshare.io/s/jw4pf4oahgbohvahx6p35w335foq/lirest-webapp-images/typeorm.png?wrap=0)](https://nodesource.com/products/nsolid)
-[![Typescript](https://link.storjshare.io/s/judy4ney5nwuzk6nm7xdpza4aevq/lirest-webapp-images/typescript.png?wrap=0)](https://nodesource.com/products/nsolid)
+![VueJS(https://link.storjshare.io/s/jxk3g34pj6scf7pfhbojczi22wza/lirest-webapp-images/vue.png?wrap=0)
+![Typescript(https://link.storjshare.io/s/judy4ney5nwuzk6nm7xdpza4aevq/lirest-webapp-images/typescript.png?wrap=0)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/46c00e86-c275-47a2-8a2a-ba72e0c39860/deploy-status)](https://app.netlify.com/sites/lirest/deploys)
 ![Package version](https://img.shields.io/github/package-json/v/tranlam1997/Lirest-BE)
