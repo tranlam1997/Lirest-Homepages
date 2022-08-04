@@ -81,6 +81,7 @@ We try to make sure Dashboard works well in the latest versions of all major bro
 ## License
 ![FQÉT](https://link.storjshare.io/s/jvaumpaymqlug2yjt6nc4w6nq4ha/lirest-webapp-images/personal-logo-2.png?wrap=0)
 Copyright &copy; 2022-2023 FQÉT Inc.
+
 MIT
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
