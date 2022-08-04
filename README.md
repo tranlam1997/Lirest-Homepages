@@ -55,7 +55,7 @@ Clone the repo to your local
 ```sh
 # Or git clone git@github.com:tranlam1997/Lirest-Homepages.git if you have SSH installed.
 git clone https://github.com/tranlam1997/Lirest-Homepages.git
-cd Lirest-FE
+cd Lirest-Homepages
 ```
 Install dependencies
 ```sh
