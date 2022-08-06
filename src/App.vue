@@ -7,7 +7,7 @@ import { isDark, preferredDark } from '@/composables'
 useHead({
   title: 'Lirest',
   meta: [
-    { name: 'description', content: 'Opinionated Vite Starter Template' },
+    { name: 'description', content: 'The web app every nerds or bookarazzis need' },
     {
       name: 'theme-color',
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
