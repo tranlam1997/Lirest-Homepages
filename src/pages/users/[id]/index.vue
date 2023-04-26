@@ -1,8 +1,10 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
-<style lang="scss" scoped>
-</style>
+<template>
+  {}
+</template>
+
+<style lang="scss" scoped></style>
 
 <route lang="yaml">
 meta:
