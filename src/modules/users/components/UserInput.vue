@@ -8,9 +8,22 @@ defineProps<{
 </script>
 
 <template>
-  <div flex-row gap-5>
-    <BaseLabel p-2 class="basis-1/4" text-start self-center :name="labelName" :content="labelContent" />
-    <div text-start self-center>
+  <div
+    flex-row
+    gap-5
+  >
+    <BaseLabel
+
+      class="basis-1/4"
+
+      self-center p-2 text-start
+      :name="labelName"
+      :content="labelContent"
+    />
+    <div
+
+      self-center text-start
+    >
       <p v-if="true">
         {{ value }}
       </p>
@@ -19,6 +32,4 @@ defineProps<{
   </div>
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

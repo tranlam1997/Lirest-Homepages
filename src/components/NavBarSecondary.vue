@@ -1,13 +1,16 @@
 <script setup lang="ts">
 const selectLocaleStatus = ref(false)
 
-const changeSelectLocaleStatus = () => {
+function changeSelectLocaleStatus() {
   selectLocaleStatus.value = !selectLocaleStatus.value
 }
 </script>
 
 <template>
-  <nav text-xl gap-3>
+  <nav
+
+    gap-3 text-xl
+  >
     <IconHome />
     <IconToggleDarkMode />
     <IconLocale @click.prevent="changeSelectLocaleStatus()" />
@@ -17,5 +20,4 @@ const changeSelectLocaleStatus = () => {
   </nav>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

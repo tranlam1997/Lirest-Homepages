@@ -1,7 +1,10 @@
 import type { AxiosResponse } from 'axios'
 import type { IUtilities } from '../auth/auth.interface'
 import type { ICreateUserDto, IUserModel } from './user.interface'
-import { ToastMessageEvent, ToastMessageType } from '@/common/messages/toast-message/messages.enum'
+import {
+  ToastMessageEvent,
+  ToastMessageType,
+} from '@/common/messages/toast-message/messages.enum'
 import { ToastMessage } from '@/common/messages/toast-message/messages'
 import { PublicRoute } from '@/routes/public/public.route'
 import $api from '@/apis/api'
@@ -40,7 +43,9 @@ class UsersService {
   }
 
   async getUserById(id: string) {
-    const res: AxiosResponse<IUserModel | any> = await $api.getUser().getUserById(id)
+    const res: AxiosResponse<IUserModel | any> = await $api
+      .getUser()
+      .getUserById(id)
 
     if (res && res.status === 200)
       return res.data

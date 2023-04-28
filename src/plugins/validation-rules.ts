@@ -1,9 +1,14 @@
+import { configure, defineRule } from 'vee-validate'
 import {
-  configure, defineRule,
-} from 'vee-validate'
-import {
-  alpha_spaces as alphaSpaces, confirmed, email, not_one_of as excluded, max,
-  max_value as maxVal, min, min_value as minVal, required,
+  alpha_spaces as alphaSpaces,
+  confirmed,
+  email,
+  not_one_of as excluded,
+  max,
+  max_value as maxVal,
+  min,
+  min_value as minVal,
+  required,
 } from '@vee-validate/rules'
 import type { UserModule } from '@/types'
 
@@ -36,7 +41,8 @@ export const install: UserModule = () => {
   configure({
     generateMessage: (ctx: any) => {
       const filterString = ctx.field.replace(/([A-Z])/g, ' $1')
-      const field = filterString.charAt(0).toUpperCase() + filterString.slice(1)
+      const field
+        = filterString.charAt(0).toUpperCase() + filterString.slice(1)
       const messages = {
         required: `The field ${field} is required.`,
         min: `The field ${field} is too short.`,

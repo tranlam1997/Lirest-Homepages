@@ -6,6 +6,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
 import App from './App.vue'
 import { checkAuth } from './middlewares/check-auth'
 import { checkGuest } from './middlewares/check-guest'
@@ -15,6 +17,7 @@ import generatedRoutes from '~pages'
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import 'uno.css'
+
 library.add(fas)
 library.add(fab)
 library.add(far)
@@ -25,16 +28,31 @@ export const createApp = ViteSSG(
   App,
   { routes, base: import.meta.env.BASE_URL },
   (ctx) => {
-    ctx.router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-      checkAuth(to, from, next)
-    })
+    ctx.app.use(Antd)
+    ctx.router.beforeEach(
+      (
+        to: RouteLocationNormalized,
+        from: RouteLocationNormalized,
+        next: NavigationGuardNext,
+      ) => {
+        checkAuth(to, from, next)
+      },
+    )
 
-    ctx.router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-      checkGuest(to, from, next)
-    })
+    ctx.router.beforeEach(
+      (
+        to: RouteLocationNormalized,
+        from: RouteLocationNormalized,
+        next: NavigationGuardNext,
+      ) => {
+        checkGuest(to, from, next)
+      },
+    )
 
     installDirectives(ctx.app)
     ctx.app.component('font-awesome-icon', FontAwesomeIcon)
-    Object.values(import.meta.globEager('./plugins/*.ts')).forEach(i => i.install?.(ctx))
+    Object.values(import.meta.globEager('./plugins/*.ts')).forEach(i =>
+      i.install?.(ctx),
+    )
   },
 )

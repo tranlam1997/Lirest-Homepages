@@ -1,17 +1,22 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div>
-    <div class="w-2/3" flex-col relative top-10 m-auto>
-      <UserNavTabs self-stretch tab-name="Overview" />
+    <div
+      class="w-2/3"
+
+      relative top-10 m-auto flex-col
+    >
+      <UserNavTabs
+        self-stretch
+        tab-name="Overview"
+      />
       <UserProfile p-30 />
     </div>
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
 
 <route lang="yaml">
 meta:

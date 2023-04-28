@@ -7,12 +7,19 @@ defineProps<{
 
 <template>
   <div>
-    <div v-if="!active" class="i-carbon:notification" />
-    <div v-if="hasNotification" class="i-carbon:notification-new" />
-    <div v-if="active" class="i-carbon:notification-off" />
+    <div
+      v-if="!active"
+      class="i-carbon:notification"
+    />
+    <div
+      v-if="hasNotification"
+      class="i-carbon:notification-new"
+    />
+    <div
+      v-if="active"
+      class="i-carbon:notification-off"
+    />
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

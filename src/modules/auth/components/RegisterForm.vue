@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
+import type { Emitter } from 'mitt'
 import type { IRegisterForm } from '../auth.interface'
 import { useUserStore } from '@/modules/users/user.store'
 import type { ToastMessageEvent } from '@/common/messages/toast-message/messages.enum'
-import { Emitter } from 'mitt';
-import { MittEvents } from '@/plugins/mitt';
+import type { MittEvents } from '@/plugins/mitt'
 
 const emit = defineEmits<{
-  (e: ToastMessageEvent.REGISTER_TOAST_MESSAGE, data: { message?: string; messageType?: string; active: boolean }): void
+  (
+    e: ToastMessageEvent.REGISTER_TOAST_MESSAGE,
+    data: { message?: string; messageType?: string; active: boolean },
+  ): void
 }>()
 const inputType = ref('password')
 const emitter = <Emitter<MittEvents>>inject('emitter')
@@ -41,8 +44,10 @@ const { handleSubmit, values, errors } = useForm<IRegisterForm>({
   initialValues,
 })
 
-const isFilledOut = () => {
-  return Object.keys(values).every(key => values[key as keyof typeof values])
+function isFilledOut() {
+  return Object.keys(values).every(
+    key => values[key as keyof typeof values],
+  )
 }
 
 emitter.on('changeInputType', (type: string) => {
@@ -56,71 +61,191 @@ const onSubmit = handleSubmit(async (values) => {
 </script>
 
 <template>
-  <form flex-col text-dark dark:text-white items-center @submit="onSubmit">
-    <div class="form-element" flex-row justify-between>
-      <RegisterInput flex-col justify-items-start class="ct-basis-45" label-content="First Name:" label-name="firstname" :error-detail="errors.firstname || ''">
+  <form
+
+    flex-col items-center text-dark dark:text-white
+    @submit="onSubmit"
+  >
+    <div
+      class="form-element"
+      flex-row
+      justify-between
+    >
+      <RegisterInput
+        flex-col
+        justify-items-start
+        class="ct-basis-45"
+        label-content="First Name:"
+        label-name="firstname"
+        :error-detail="errors.firstname || ''"
+      >
         <template #input>
-          <InputText input-name="firstname" input-style="input-format" />
+          <InputText
+            input-name="firstname"
+            input-style="input-format"
+          />
         </template>
       </RegisterInput>
 
-      <RegisterInput flex-col justify-items-start class="ct-basis-45" label-content="Last Name:" label-name="lastname" :error-detail="errors.lastname || ''">
+      <RegisterInput
+        flex-col
+        justify-items-start
+        class="ct-basis-45"
+        label-content="Last Name:"
+        label-name="lastname"
+        :error-detail="errors.lastname || ''"
+      >
         <template #input>
-          <InputText input-name="lastname" input-style="input-format" />
-        </template>
-      </RegisterInput>
-    </div>
-
-    <div class="form-element" flex-row justify-between>
-      <RegisterInput flex-col justify-items-start class="ct-basis-45" label-content="Date Of Birth:" label-name="dateOfBirth" :error-detail="errors.dateOfBirth || ''">
-        <template #input>
-          <InputDate input-name="dateOfBirth" input-style="border-gray-400 p-1 border-1 dark:text-dark w-full" />
-        </template>
-      </RegisterInput>
-
-      <RegisterInput flex-col justify-items-start class="ct-basis-45" label-content="Email:" label-name="email" :error-detail="errors.email || ''">
-        <template #input>
-          <InputText input-name="email" input-style="input-format" />
-        </template>
-      </RegisterInput>
-    </div>
-
-    <div class="form-element" flex-row justify-between>
-      <RegisterInput flex-col justify-items-start class="ct-basis-45" label-content="Phone Number:" label-name="phoneNumber" :error-detail="errors.phoneNumber || ''">
-        <template #input>
-          <InputText input-name="phoneNumber" input-style="input-format" />
-        </template>
-      </RegisterInput>
-
-      <RegisterInput flex-col justify-items-start class="ct-basis-45" label-content="Username:" label-name="username" :error-detail="errors.username || ''">
-        <template #input>
-          <InputText input-name="username" input-style="input-format" />
-        </template>
-      </RegisterInput>
-    </div>
-
-    <div class="form-element" flex-row justify-between>
-      <RegisterInput relative flex-col justify-items-start class="ct-basis-45" label-content="Password:" label-name="password" :error-detail="errors.password || ''">
-        <template #input>
-          <BaseInput input-name="password" :input-type="inputType" input-style="input-format" />
-        </template>
-        <ContentToggler bg-white dark:bg-gray-800 absolute top-0 right-0/>
-      </RegisterInput>
-
-      <RegisterInput relative flex-col justify-items-start class="ct-basis-45" label-content="Confirm Password:" label-name="confirmPassword" :error-detail="errors.confirmPassword || ''">
-        <template #input>
-          <InputPassword input-name="confirmPassword" input-style="input-format" />
+          <InputText
+            input-name="lastname"
+            input-style="input-format"
+          />
         </template>
       </RegisterInput>
     </div>
 
-    <div flex-row justify-between class="w-1/2">
-      <p text-sm text-dark dark:text-white self-center>
-        Already a member? <router-link underline to="/login">
+    <div
+      class="form-element"
+      flex-row
+      justify-between
+    >
+      <RegisterInput
+        flex-col
+        justify-items-start
+        class="ct-basis-45"
+        label-content="Date Of Birth:"
+        label-name="dateOfBirth"
+        :error-detail="errors.dateOfBirth || ''"
+      >
+        <template #input>
+          <InputDate
+            input-name="dateOfBirth"
+            input-style="border-gray-400 p-1 border-1 dark:text-dark w-full"
+          />
+        </template>
+      </RegisterInput>
+
+      <RegisterInput
+        flex-col
+        justify-items-start
+        class="ct-basis-45"
+        label-content="Email:"
+        label-name="email"
+        :error-detail="errors.email || ''"
+      >
+        <template #input>
+          <InputText
+            input-name="email"
+            input-style="input-format"
+          />
+        </template>
+      </RegisterInput>
+    </div>
+
+    <div
+      class="form-element"
+      flex-row
+      justify-between
+    >
+      <RegisterInput
+        flex-col
+        justify-items-start
+        class="ct-basis-45"
+        label-content="Phone Number:"
+        label-name="phoneNumber"
+        :error-detail="errors.phoneNumber || ''"
+      >
+        <template #input>
+          <InputText
+            input-name="phoneNumber"
+            input-style="input-format"
+          />
+        </template>
+      </RegisterInput>
+
+      <RegisterInput
+        flex-col
+        justify-items-start
+        class="ct-basis-45"
+        label-content="Username:"
+        label-name="username"
+        :error-detail="errors.username || ''"
+      >
+        <template #input>
+          <InputText
+            input-name="username"
+            input-style="input-format"
+          />
+        </template>
+      </RegisterInput>
+    </div>
+
+    <div
+      class="form-element"
+      flex-row
+      justify-between
+    >
+      <RegisterInput
+        relative
+        flex-col
+        justify-items-start
+        class="ct-basis-45"
+        label-content="Password:"
+        label-name="password"
+        :error-detail="errors.password || ''"
+      >
+        <template #input>
+          <BaseInput
+            input-name="password"
+            :input-type="inputType"
+            input-style="input-format"
+          />
+        </template>
+        <ContentToggler
+
+          absolute right-0 top-0 bg-white dark:bg-gray-800
+        />
+      </RegisterInput>
+
+      <RegisterInput
+        relative
+        flex-col
+        justify-items-start
+        class="ct-basis-45"
+        label-content="Confirm Password:"
+        label-name="confirmPassword"
+        :error-detail="errors.confirmPassword || ''"
+      >
+        <template #input>
+          <InputPassword
+            input-name="confirmPassword"
+            input-style="input-format"
+          />
+        </template>
+      </RegisterInput>
+    </div>
+
+    <div
+      flex-row
+      justify-between
+      class="w-1/2"
+    >
+      <p
+
+        self-center text-sm text-dark dark:text-white
+      >
+        Already a member?
+        <router-link
+          underline
+          to="/login"
+        >
           Sign in
         </router-link>
       </p>
-      <button :disabled="!isFilledOut()" btn-submit>
+      <button
+        :disabled="!isFilledOut()"
+        btn-submit
+      >
         Sign up
       </button>
     </div>
@@ -128,29 +253,29 @@ const onSubmit = handleSubmit(async (values) => {
 </template>
 
 <style lang="scss" scoped>
-form {
-  margin: 1rem 0 1rem;
-  width: 75%;
-  padding: 2rem 0 1rem;
+  form {
+    margin: 1rem 0 1rem;
+    width: 75%;
+    padding: 2rem 0 1rem;
 
-  &>.form-element {
-    width: 100%;
-    height: 7rem;
+    & > .form-element {
+      width: 100%;
+      height: 7rem;
+    }
   }
-}
 
-.error-message {
-  color: #f44336;
-  font-size: 0.8rem;
-}
+  .error-message {
+    color: #f44336;
+    font-size: 0.8rem;
+  }
 
-label {
-  text-align: left;
-  align-self: auto;
-}
+  label {
+    text-align: left;
+    align-self: auto;
+  }
 
-button {
-  padding: 0.25rem;
-  margin: 1rem 0;
-}
+  button {
+    padding: 0.25rem;
+    margin: 1rem 0;
+  }
 </style>

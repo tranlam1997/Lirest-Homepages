@@ -5,6 +5,7 @@
     "target": "ESNext",
     "lib": ["DOM", "ESNext"],
     "strict": true,
+    "jsx": "preserve",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
@@ -21,6 +22,12 @@
     "paths": {
       "@/*": ["src/*"]
     }
+  },
+  "vueCompilerOptions": {
+    "plugins": [
+      "@vue-macros/volar/define-models",
+      "@vue-macros/volar/define-slots"
+    ]
   },
   "exclude": ["dist", "node_modules", "cypress"]
 }

@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import type { Emitter } from 'mitt'
 import { LocalStorage } from '@/common/helpers/local-storage.helper'
 import type { IUserInfoLocalStorage } from '@/common/interfaces/local-storage.interface'
 import { UserInfo } from '@/modules/users/user.constant'
-import { MittEvents } from '@/plugins/mitt';
-import { Emitter } from 'mitt';
+import type { MittEvents } from '@/plugins/mitt'
 
-
-const {username, userId} = LocalStorage.getObjectItem<IUserInfoLocalStorage>(UserInfo)
+const { username, userId }
+    = LocalStorage.getObjectItem<IUserInfoLocalStorage>(UserInfo)
 const router = useRouter()
 router.push(`/users/${userId}`)
 const emitter = <Emitter<MittEvents>>inject('emitter')
@@ -26,22 +26,27 @@ emitter.on('toastMessage', (value) => {
 
 <template>
   <div>
-    <ToastMessage :class="messageType" :message-position="{ left: '-500px', top: '150px' }"
-      :style="toastActive ? { transform: 'translateX(500px)' } : ''">
+    <ToastMessage
+      :class="messageType"
+      :message-position="{ left: '-500px', top: '150px' }"
+      :style="toastActive ? { transform: 'translateX(500px)' } : ''"
+    >
       {{ message }}
     </ToastMessage>
-    <UserHeader ct-user-header-box-shadow :username="username" />
+    <UserHeader
+      ct-user-header-box-shadow
+      :username="username"
+    />
     <Suspense>
       <router-view />
     </Suspense>
   </div>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
 
 <route lang="yaml">
-  meta:
-    layout: user
-    requiresAuth: true
+meta:
+  layout: user
+  requiresAuth: true
 </route>

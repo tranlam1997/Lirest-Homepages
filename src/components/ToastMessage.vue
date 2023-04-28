@@ -1,14 +1,21 @@
 <script setup lang="ts">
 defineProps<{
-  messagePosition?: Record<'top' | 'bottom' | 'left' | 'right', any>
+  messagePosition?: Partial<{
+    left: string
+    top: string
+    bottom: string
+    right: string
+  }>
 }>()
 
-onMounted(() => {
-})
+onMounted(() => {})
 </script>
 
 <template>
-  <div class="message-container" :style="messagePosition">
+  <div
+    class="message-container"
+    :style="messagePosition"
+  >
     <slot />
   </div>
 </template>

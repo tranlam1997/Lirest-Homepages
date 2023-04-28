@@ -1,7 +1,16 @@
 {
-  "extends": "@antfu",
+  "extends": [
+    "@antfu",
+    "@unocss"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "jsx": false
+    }
+  },
   "rules": {
     "no-console": "off",
-    "vue/require-v-for-key": "off",
+    "vue/require-v-for-key": "off"
   }
 }

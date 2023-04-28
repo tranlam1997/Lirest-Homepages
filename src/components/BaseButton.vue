@@ -9,11 +9,15 @@ defineProps<{
 </script>
 
 <template>
-  <button :type="type" :name="name" :value="value">
+  <button
+    :type="type"
+    :name="name"
+    :value="value"
+  >
     <slot />
   </button>
 </template>
 
 <style scoped lang="scss">
-@use '../styles/scss/base/_button.scss';
+  @use '../styles/scss/base/_button.scss';
 </style>

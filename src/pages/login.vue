@@ -6,7 +6,7 @@ const message = ref('')
 const messageType = ref('')
 const active = ref(false)
 
-const assignMessage = (data: { message?: string; messageType?: string; active: boolean }) => {
+function assignMessage(data: { message?: string; messageType?: string; active: boolean }) {
   message.value = data.message || message.value
   messageType.value = data.messageType || messageType.value
   active.value = data.active
@@ -32,12 +32,14 @@ useHead({
 </script>
 
 <template>
-  <NavBarSecondary class="w-1/5" flex-row justify-center absolute mt-4 top-0 right-0 />
-  <main class="mt-6 mx-auto px-4 py-10 text-center flex-col items-center w-2/5" dark:bg-dark-600>
+  <NavBarSecondary class="w-1/5" absolute right-0 top-0 mt-4 flex-row justify-center />
+  <main class="mx-auto mt-6 w-2/5 flex-col items-center px-4 py-10 text-center" dark:bg-dark-600>
     <LirestLogo height="h-15" />
     <BaseHorizontalLine width="75%" />
-    <ToastMessage :class="messageType" :message-position="{ top: '-100px' }"
-      :style="active ? { transform: 'translateY(100px)' } : ''">
+    <ToastMessage
+      :class="messageType" :message-position="{ top: '-100px' }"
+      :style="active ? { transform: 'translateY(100px)' } : ''"
+    >
       {{ message }}
     </ToastMessage>
     <LoginForm @login-toast-message="assignMessage" />

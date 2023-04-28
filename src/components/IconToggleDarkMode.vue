@@ -6,12 +6,15 @@ const { t } = useI18n()
 
 <template>
   <button
-    class="icon-btn !outline-none" flex-row :title="t('button.toggle_dark')" text-gray-900
-    dark:text-gray-100 @click="toggleDark()"
+    class="icon-btn !outline-none"
+    flex-row
+    :title="t('button.toggle_dark')"
+    text-gray-900
+    dark:text-gray-100
+    @click="toggleDark()"
   >
     <div i="carbon-sun dark:carbon-moon" />
   </button>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

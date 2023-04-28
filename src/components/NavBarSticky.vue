@@ -4,20 +4,32 @@ defineProps<{
 }>()
 const isSelectLocaleActive = ref(false)
 
-const changeSelectLocaleStatus = () => {
+function changeSelectLocaleStatus() {
   isSelectLocaleActive.value = !isSelectLocaleActive.value
 }
-const hiddenInputSelectedLocale = () => {
+function hiddenInputSelectedLocale() {
   isSelectLocaleActive.value = false
 }
 </script>
 
 <template>
   <div sticky>
-    <nav :class="navStyle" text-xl gap-3>
+    <nav
+      :class="navStyle"
+
+      gap-3 text-xl
+    >
       <IconHome />
       <IconToggleDarkMode />
-      <div v-click-outside="() => { hiddenInputSelectedLocale() }" flex-row justify-end gap-1 w-full>
+      <div
+        v-click-outside="
+          () => {
+            hiddenInputSelectedLocale();
+          }
+        "
+
+        w-full flex-row justify-end gap-1
+      >
         <InputSelectLocale :active="isSelectLocaleActive" />
         <IconLocale @click.prevent="changeSelectLocaleStatus()" />
       </div>
@@ -27,5 +39,4 @@ const hiddenInputSelectedLocale = () => {
   </div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

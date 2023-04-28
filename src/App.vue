@@ -7,17 +7,22 @@ import { isDark, preferredDark } from '@/composables'
 useHead({
   title: 'Lirest',
   meta: [
-    { name: 'description', content: 'The web app every nerds or bookarazzis need' },
+    {
+      name: 'description',
+      content: 'The web app every nerds or bookarazzis need',
+    },
     {
       name: 'theme-color',
-      content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
+      content: computed(() => (isDark.value ? '#00aba9' : '#ffffff')),
     },
   ],
   link: [
     {
       rel: 'icon',
       type: 'image/svg+xml',
-      href: computed(() => preferredDark.value ? '/favicon-dark.svg' : '/favicon.svg'),
+      href: computed(() =>
+        preferredDark.value ? '/favicon-dark.svg' : '/favicon.svg',
+      ),
     },
   ],
 })
@@ -27,5 +32,4 @@ useHead({
   <RouterView />
 </template>
 
-<style>
-</style>
+<style></style>

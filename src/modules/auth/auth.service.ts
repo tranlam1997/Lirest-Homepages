@@ -1,16 +1,26 @@
 import type { AxiosResponse } from 'axios'
 import { UserInfo } from '../users/user.constant'
-import type { ILoginData, ILoginResponseData, IRefreshTokenResponseData, IUtilities } from './auth.interface'
+import type {
+  ILoginData,
+  ILoginResponseData,
+  IRefreshTokenResponseData,
+  IUtilities,
+} from './auth.interface'
 import { decodeToken } from '@/common/helpers/token.helper'
 import { LocalStorage } from '@/common/helpers/local-storage.helper'
-import { ToastMessageEvent, ToastMessageType } from '@/common/messages/toast-message/messages.enum'
+import {
+  ToastMessageEvent,
+  ToastMessageType,
+} from '@/common/messages/toast-message/messages.enum'
 import { ToastMessage } from '@/common/messages/toast-message/messages'
 import { UserRoute } from '@/routes/auth/user/user.route'
 import $api from '@/apis/api'
 
 class AuthService {
   async login(data: ILoginData, utilities: IUtilities) {
-    const res: AxiosResponse<ILoginResponseData | any> = await $api.getAuth().login(data)
+    const res: AxiosResponse<ILoginResponseData | any> = await $api
+      .getAuth()
+      .login(data)
     const { emit, router } = utilities
 
     if (res && res.status === 200) {
@@ -54,7 +64,9 @@ class AuthService {
   }
 
   async refreshToken(refreshToken: string) {
-    const res: AxiosResponse<IRefreshTokenResponseData | any> = await $api.getAuth().refreshToken(refreshToken)
+    const res: AxiosResponse<IRefreshTokenResponseData | any> = await $api
+      .getAuth()
+      .refreshToken(refreshToken)
 
     if (res && res.status === 200) {
       const { accessToken, refreshToken } = res.data

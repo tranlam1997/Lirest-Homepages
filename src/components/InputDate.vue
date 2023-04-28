@@ -1,6 +1,6 @@
 <script setup lang="ts">
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { InputEmitEvents } from './enums/input.enum'
+
 defineProps<{
   inputName?: string
   inputPlaceholder?: string
@@ -12,10 +12,15 @@ defineEmits<{
 </script>
 
 <template>
-  <BaseInput :input-placeholder="inputPlaceholder || 'DD-MM-YYYY'" input-type="date" :input-name="inputName" :input-style="inputStyle" @input-change="$emit(InputEmitEvents.INPUT_EVENT)">
+  <BaseInput
+    :input-placeholder="inputPlaceholder || 'DD-MM-YYYY'"
+    input-type="date"
+    :input-name="inputName"
+    :input-style="inputStyle"
+    @input-change="$emit(InputEmitEvents.INPUT_EVENT)"
+  >
     <span hidden />
   </BaseInput>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,10 +1,16 @@
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
 
 <template>
-  <div class="header" flex-row justify-center items-center relative w-full>
+  <div
+    class="header"
+
+    relative w-full flex-row items-center justify-center
+  >
     <LirestLogo height="h-15" />
-    <div flex-row gap-2 absolute right-10 top-10>
+    <div
+
+      absolute right-10 top-10 flex-row gap-2
+    >
       <LoginButton />
       <RegisterButton />
     </div>
@@ -12,8 +18,8 @@
 </template>
 
 <style scoped>
-.header {
-  background-image: linear-gradient(to right, #92ffc0, #002661);
-  height: 120px;
-}
+  .header {
+    background-image: linear-gradient(to right, #92ffc0, #002661);
+    height: 120px;
+  }
 </style>

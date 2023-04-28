@@ -10,7 +10,7 @@ defineProps<{
 
 <style scoped>
   .error-message {
-  color: #f44336;
-  font-size: 0.8rem;
-}
+    color: #f44336;
+    font-size: 0.8rem;
+  }
 </style>

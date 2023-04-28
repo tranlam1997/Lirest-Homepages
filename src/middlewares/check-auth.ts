@@ -2,8 +2,11 @@ import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { LocalStorage } from '@/common/helpers/local-storage.helper'
 import { UserInfo } from '@/modules/users/user.constant'
 
-export const checkAuth = async (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-  const { accessToken, refreshTokenExpiresIn } = LocalStorage.getObjectItem(UserInfo)
+export async function checkAuth(to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext) {
+  const { accessToken, refreshTokenExpiresIn }
+    = LocalStorage.getObjectItem(UserInfo)
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!accessToken) {
       next({

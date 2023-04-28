@@ -9,6 +9,4 @@ defineProps<{
   <label :for="name">{{ content }}</label>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

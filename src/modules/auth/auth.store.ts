@@ -3,13 +3,10 @@ import authService from './auth.service'
 
 export const useAuthStore = defineStore('authId', {
   state: () => {
-    return {
-    }
+    return {}
   },
 
-  getters: {
-
-  },
+  getters: {},
 
   actions: {
     async login(data: ILoginData, options: IUtilities) {

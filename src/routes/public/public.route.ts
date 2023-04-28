@@ -1,15 +1,15 @@
 export const PublicRoute = {
   basePath: '/',
   home() {
-    return this.basePath
+    return this.basePath;
   },
   login() {
-    return `${this.basePath}login`
+    return `${this.basePath}login`;
   },
   register() {
-    return `${this.basePath}register`
+    return `${this.basePath}register`;
   },
   about() {
-    return `${this.basePath}about`
-  }
-}
+    return `${this.basePath}about`;
+  },
+};

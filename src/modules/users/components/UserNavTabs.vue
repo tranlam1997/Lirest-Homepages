@@ -20,12 +20,17 @@ const tabs = [
 
 <template>
   <div flex-row>
-    <template v-for="(tab, index) of tabs" :key="`${tab}${index}`">
-      <UserTab :content="tab.content" :symbol="tab.symbol" :is-tab-active="tab.content === tabName" />
+    <template
+      v-for="(tab, index) of tabs"
+      :key="`${tab}${index}`"
+    >
+      <UserTab
+        :content="tab.content"
+        :symbol="tab.symbol"
+        :is-tab-active="tab.content === tabName"
+      />
     </template>
   </div>
 </template>
 
-<style lang="">
-
-</style>
+<style lang=""></style>

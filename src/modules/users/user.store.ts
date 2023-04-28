@@ -17,7 +17,6 @@ export const useUserStore = defineStore('userId', {
       return userService.getUserById(id)
     },
   },
-
 })
 
 if (import.meta.hot)

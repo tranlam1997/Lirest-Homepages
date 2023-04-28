@@ -4,8 +4,8 @@
   "private": true,
   "packageManager": "pnpm@7.0.0",
   "description": "Lirest UI",
-  "license": "MIT",
   "author": "Tran Lam",
+  "license": "MIT",
   "main": "src/main.ts",
   "scripts": {
     "prebuild": "rimraf dist",
@@ -29,6 +29,7 @@
     "@vee-validate/rules": "^4.8.6",
     "@vueuse/core": "^8.9.4",
     "@vueuse/head": "^0.7.13",
+    "ant-design-vue": "^3.2.20",
     "axios": "^0.27.2",
     "jwt-decode": "^3.1.2",
     "mitt": "^3.0.0",
@@ -46,14 +47,19 @@
     "cypress": "^9.7.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.23.1",
+    "@antfu/eslint-config": "^0.38.5",
+    "@babel/core": "^7.21.4",
+    "@babel/eslint-parser": "^7.21.3",
     "@iconify-json/carbon": "^1.1.16",
     "@iconify/json": "^2.2.55",
     "@intlify/vite-plugin-vue-i18n": "3.4.0",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/nprogress": "^0.2.0",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@unocss/eslint-config": "^0.51.8",
     "@vitejs/plugin-vue": "^2.3.4",
     "@vue/test-utils": "^2.3.2",
+    "babel-eslint": "^10.1.0",
     "critters": "^0.0.16",
     "cross-env": "^7.0.3",
     "eslint": "^8.39.0",
@@ -80,6 +86,7 @@
     "vite-ssg": "^0.20.2",
     "vite-ssg-sitemap": "^0.2.7",
     "vitest": "^0.12.10",
+    "vue-eslint-parser": "^9.1.1",
     "vue-tsc": "^0.34.17"
   },
   "lint-staged": {

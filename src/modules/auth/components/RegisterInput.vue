@@ -14,13 +14,15 @@ defineEmits<{
 
 <template>
   <div>
-    <BaseLabel self-start :name="labelName" :content="labelContent" />
+    <BaseLabel
+      self-start
+      :name="labelName"
+      :content="labelContent"
+    />
     <slot name="input" />
     <AuthErrorMessage :error-detail="errorDetail" />
     <slot />
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

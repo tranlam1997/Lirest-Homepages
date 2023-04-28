@@ -7,11 +7,15 @@ const { userId } = LocalStorage.getObjectItem(UserInfo)
 </script>
 
 <template>
-  <RouterLink flex-row icon-btn :to="userId ? `/users/${userId}` : '/'" :title="t('button.home')" text-gray-900 dark:text-gray-100>
+  <RouterLink
+
+    :to="userId ? `/users/${userId}` : '/'"
+    :title="t('button.home')"
+
+    flex-row text-gray-900 icon-btn dark:text-gray-100
+  >
     <div i-dashicons:admin-home />
   </RouterLink>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

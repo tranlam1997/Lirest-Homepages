@@ -1,4 +1,4 @@
-export const convertLocaleCodeToLanguage = (localeCode: string) => {
+export function convertLocaleCodeToLanguage(localeCode: string) {
   switch (localeCode) {
     case 'ar':
       return 'Arabic'
