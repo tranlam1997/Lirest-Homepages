@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Emitter } from 'mitt'
-import { useUserStore } from '../user.store.js'
+import { useUserStore } from '../user.store'
 
 import type { MittEvents } from '@/plugins/mitt'
 
@@ -10,6 +10,7 @@ const userStore = useUserStore()
 const emitter = <Emitter<MittEvents>>inject('emitter')
 
 userData.value = await userStore.getUserById(route.params.id as string)
+
 onBeforeMount(() => {
   if (!userData.value) {
     emitter.emit('toastMessage', {

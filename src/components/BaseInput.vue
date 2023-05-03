@@ -13,6 +13,7 @@ defineProps<{
 
 defineEmits<{
   (e: InputEmitEvents.INPUT_EVENT): void
+  (e: InputEmitEvents.FOCUS_OUT_EVENT): void
 }>()
 
 const isDarkMode = isDark
@@ -22,10 +23,11 @@ const isDarkMode = isDark
   <div>
     <Field
       :type="inputType"
-      :name="inputName"
+      :name="inputName || ''"
       :placeholder="inputPlaceholder"
       :class="inputStyle"
       @input="$emit(InputEmitEvents.INPUT_EVENT)"
+      @focusout="$emit(InputEmitEvents.FOCUS_OUT_EVENT)"
     />
     <slot>
       <i
@@ -41,6 +43,9 @@ const isDarkMode = isDark
 </template>
 
 <style scoped>
+input::-ms-reveal, input::-ms-clear {
+  display: none;
+}
   i::after {
     content: '';
     display: block;

@@ -11,7 +11,7 @@ import $api from '@/apis/api'
 
 class UsersService {
   async createUser(data: ICreateUserDto, utilities: IUtilities) {
-    const res = await $api.getUser().createUser(data)
+    const res = await $api.getUserApis().createUser(data)
     const router = useRouter()
     const { emit } = utilities
 
@@ -44,7 +44,7 @@ class UsersService {
 
   async getUserById(id: string) {
     const res: AxiosResponse<IUserModel | any> = await $api
-      .getUser()
+      .getUserApis()
       .getUserById(id)
 
     if (res && res.status === 200)

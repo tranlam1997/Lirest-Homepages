@@ -4,6 +4,7 @@ defineProps<{
   labelContent: string
   errorDetail: string
   value: string
+  [k: string]: any
 }>()
 </script>
 
@@ -13,15 +14,12 @@ defineProps<{
     gap-5
   >
     <BaseLabel
-
       class="basis-1/4"
-
       self-center p-2 text-start
       :name="labelName"
       :content="labelContent"
     />
     <div
-
       self-center text-start
     >
       <p v-if="true">

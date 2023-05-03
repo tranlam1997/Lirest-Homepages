@@ -44,7 +44,7 @@ export const install: UserModule = () => {
       const field
         = filterString.charAt(0).toUpperCase() + filterString.slice(1)
       const messages = {
-        required: `The field ${field} is required.`,
+        required: 'This field is required.',
         min: `The field ${field} is too short.`,
         max: `The field ${field} is too long.`,
         alpha_spaces: `The field ${field} must only contain alphabetical characters and spaces.`,

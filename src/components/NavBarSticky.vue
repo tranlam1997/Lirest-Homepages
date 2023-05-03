@@ -13,22 +13,16 @@ function hiddenInputSelectedLocale() {
 </script>
 
 <template>
-  <div sticky>
+  <div>
     <nav
       :class="navStyle"
-
       gap-3 text-xl
     >
       <IconHome />
       <IconToggleDarkMode />
       <div
-        v-click-outside="
-          () => {
-            hiddenInputSelectedLocale();
-          }
-        "
-
-        w-full flex-row justify-end gap-1
+       v-on-click-outside="hiddenInputSelectedLocale"
+       w-full flex-row justify-end
       >
         <InputSelectLocale :active="isSelectLocaleActive" />
         <IconLocale @click.prevent="changeSelectLocaleStatus()" />

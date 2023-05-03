@@ -1,5 +1,5 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
-import { LocalStorage } from '@/common/helpers/local-storage.helper'
+import { LocalStorage } from '@/common/helpers/local-storage'
 import { UserInfo } from '@/modules/users/user.constant'
 
 export async function checkGuest(to: RouteLocationNormalized,

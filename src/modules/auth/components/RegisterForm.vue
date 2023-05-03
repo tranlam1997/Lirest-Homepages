@@ -13,6 +13,7 @@ const emit = defineEmits<{
   ): void
 }>()
 const inputType = ref('password')
+const isFocus = ref(false)
 const emitter = <Emitter<MittEvents>>inject('emitter')
 const router = useRouter()
 const userStore = useUserStore()
@@ -48,6 +49,14 @@ function isFilledOut() {
   return Object.keys(values).every(
     key => values[key as keyof typeof values],
   )
+}
+
+function focusPassword() {
+  isFocus.value = true
+}
+
+function focusOutPassword() {
+  isFocus.value = false
 }
 
 emitter.on('changeInputType', (type: string) => {
@@ -199,11 +208,13 @@ const onSubmit = handleSubmit(async (values) => {
             input-name="password"
             :input-type="inputType"
             input-style="input-format"
+            @input-change="focusPassword"
+            @focus-out="focusOutPassword"
           />
         </template>
         <ContentToggler
-
-          absolute right-0 top-0 bg-white dark:bg-gray-800
+          absolute right-0 top-7 bg-white dark:bg-gray-800
+          :is-focus="isFocus"
         />
       </RegisterInput>
 

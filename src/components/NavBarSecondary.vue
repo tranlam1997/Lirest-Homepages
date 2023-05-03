@@ -8,7 +8,6 @@ function changeSelectLocaleStatus() {
 
 <template>
   <nav
-
     gap-3 text-xl
   >
     <IconHome />

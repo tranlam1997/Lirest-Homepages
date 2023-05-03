@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import UserNotificationLogo from './UserNotificationLogo.vue'
-
 defineProps<{
   username: string
 }>()

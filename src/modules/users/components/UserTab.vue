@@ -11,7 +11,6 @@ const isDarkMode = isDark
 
 <template>
   <div
-
     flex-row cursor-pointer gap-2 p-3 hover:bg-gray-400 hover:text-gray-100 dark:hover:bg-green-700
     :class="{ 'tab': isTabActive, 'dark-tab': isDarkMode }"
   >

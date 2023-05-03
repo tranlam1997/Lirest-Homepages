@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { convertLocaleCodeToLanguage } from '@/common/helpers/locale.helper'
+import { convertLocaleCodeToLanguage } from '@/common/helpers/locale'
 import { useLocaleStore } from '@/common/store/locale.store'
 
 defineProps<{

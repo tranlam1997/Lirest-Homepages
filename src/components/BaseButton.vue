@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { ButtonType } from './interfaces/button.interface'
+import type { ButtonHTMLAttributes } from 'vue'
 
 defineProps<{
-  type?: ButtonType
+  type: ButtonHTMLAttributes['type']
   name?: string
   value?: string
 }>()

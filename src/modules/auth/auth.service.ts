@@ -6,8 +6,8 @@ import type {
   IRefreshTokenResponseData,
   IUtilities,
 } from './auth.interface'
-import { decodeToken } from '@/common/helpers/token.helper'
-import { LocalStorage } from '@/common/helpers/local-storage.helper'
+import { decodeToken } from '@/common/helpers/token'
+import { LocalStorage } from '@/common/helpers/local-storage'
 import {
   ToastMessageEvent,
   ToastMessageType,
@@ -15,28 +15,29 @@ import {
 import { ToastMessage } from '@/common/messages/toast-message/messages'
 import { UserRoute } from '@/routes/auth/user/user.route'
 import $api from '@/apis/api'
+import { isAxiosSuccess } from '@/shared/interfaces/axios-response'
 
 class AuthService {
   async login(data: ILoginData, utilities: IUtilities) {
-    const res: AxiosResponse<ILoginResponseData | any> = await $api
-      .getAuth()
+    const res = await $api
+      .getAuthApis()
       .login(data)
     const { emit, router } = utilities
 
-    if (res && res.status === 200) {
+    if (isAxiosSuccess<ILoginResponseData>(res)) {
       emit(ToastMessageEvent.LOGIN_TOAST_MESSAGE, {
         message: ToastMessage.LoginSuccess,
         messageType: ToastMessageType.SUCCESS,
         active: true,
       })
 
-      const tokenInfo = decodeToken(res.data.accessToken)
+      const tokenInfo = decodeToken(res.data.data.accessToken)
 
       LocalStorage.setObjectItem(UserInfo, {
         userId: tokenInfo.userId,
         username: tokenInfo.username,
-        accessToken: res.data.accessToken,
-        refreshToken: res.data.refreshToken,
+        accessToken: res.data.data.accessToken,
+        refreshToken: res.data.data.refreshToken,
         refreshTokenExpiresIn: tokenInfo.refreshTokenExpiresIn,
       })
 
@@ -49,23 +50,22 @@ class AuthService {
 
       return res
     }
-    else {
+
+    emit(ToastMessageEvent.LOGIN_TOAST_MESSAGE, {
+      message: ToastMessage.LoginFailed,
+      messageType: ToastMessageType.ERROR,
+      active: true,
+    })
+    setTimeout(() => {
       emit(ToastMessageEvent.LOGIN_TOAST_MESSAGE, {
-        message: res.data?.message || res.data,
-        messageType: ToastMessageType.ERROR,
-        active: true,
+        active: false,
       })
-      setTimeout(() => {
-        emit(ToastMessageEvent.LOGIN_TOAST_MESSAGE, {
-          active: false,
-        })
-      }, 2000)
-    }
+    }, 2000)
   }
 
   async refreshToken(refreshToken: string) {
     const res: AxiosResponse<IRefreshTokenResponseData | any> = await $api
-      .getAuth()
+      .getAuthApis()
       .refreshToken(refreshToken)
 
     if (res && res.status === 200) {

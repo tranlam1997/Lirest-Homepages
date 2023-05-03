@@ -21,8 +21,8 @@ const tabs = [
 <template>
   <div flex-row>
     <template
-      v-for="(tab, index) of tabs"
-      :key="`${tab}${index}`"
+      v-for="(tab, _index) of tabs"
+      :key="`${tab}${_index}`"
     >
       <UserTab
         :content="tab.content"

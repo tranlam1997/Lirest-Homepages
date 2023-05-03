@@ -2,6 +2,7 @@
 defineProps<{
   active: boolean
   hasNotification: boolean
+  [k: string]: any
 }>()
 </script>
 

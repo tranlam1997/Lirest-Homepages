@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { Emitter } from 'mitt'
-import { LocalStorage } from '@/common/helpers/local-storage.helper'
-import type { IUserInfoLocalStorage } from '@/common/interfaces/local-storage.interface'
+import { LocalStorage } from '@/common/helpers/local-storage'
 import { UserInfo } from '@/modules/users/user.constant'
 import type { MittEvents } from '@/plugins/mitt'
+import type { IUserInfoLocalStorage } from '@/shared/interfaces/local-storage'
 
-const { username, userId }
-    = LocalStorage.getObjectItem<IUserInfoLocalStorage>(UserInfo)
+const { username, userId } = LocalStorage.getObjectItem<IUserInfoLocalStorage>(UserInfo)
 const router = useRouter()
 router.push(`/users/${userId}`)
 const emitter = <Emitter<MittEvents>>inject('emitter')

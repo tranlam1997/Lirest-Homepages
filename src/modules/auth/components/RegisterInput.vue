@@ -16,8 +16,8 @@ defineEmits<{
   <div>
     <BaseLabel
       self-start
-      :name="labelName"
-      :content="labelContent"
+      :name="labelName || ''"
+      :content="labelContent || ''"
     />
     <slot name="input" />
     <AuthErrorMessage :error-detail="errorDetail" />

@@ -15,6 +15,7 @@ export interface IUtilities {
 }
 
 export interface ILoginData {
+  username: string
   email: string
   password: string
 }
@@ -28,6 +29,8 @@ export interface IRefreshTokenResponseData extends ILoginResponseData {}
 
 export interface IAccessTokenPayload {
   userId: string
+  email: string
   username: string
+  subjectId: number
   refreshTokenExpiresIn: number
 }

@@ -3,7 +3,7 @@
 <template>
   <BaseButton
     btn-user
-    type="button"
+    type = "button"
   >
     <slot />
   </BaseButton>

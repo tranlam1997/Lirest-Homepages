@@ -2,6 +2,11 @@
 import type { Emitter } from 'mitt'
 import type { MittEvents } from '@/plugins/mitt'
 
+defineProps<{
+  isFocus: boolean
+  [k: string]: any
+}>()
+
 const active = ref(true)
 const emitter = <Emitter<MittEvents>>inject('emitter')
 
@@ -12,14 +17,29 @@ function changeInputType(type: string) {
 </script>
 
 <template>
-  <div flex-row>
-    <div
+  <div
+    v-show="isFocus"
+    flex-row bg-transparent
+  >
+    <!-- <div
       v-if="active"
-      class="i-fa-regular:eye"
+      class="i-fa:eye"
+      cursor-pointer
+      @click.prevent="changeInputType('text')"
+    /> -->
+    <i
+      v-if="active"
+      class="i-fa:eye"
       cursor-pointer
       @click.prevent="changeInputType('text')"
     />
-    <div
+    <!-- <div
+      v-if="!active"
+      class="i-fa-regular:eye-slash"
+      cursor-pointer
+      @click.prevent="changeInputType('password')"
+    /> -->
+    <i
       v-if="!active"
       class="i-fa-regular:eye-slash"
       cursor-pointer
@@ -28,4 +48,5 @@ function changeInputType(type: string) {
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>

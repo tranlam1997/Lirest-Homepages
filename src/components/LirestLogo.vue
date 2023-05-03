@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { isDark } from '@/composables'
-import { LocalStorage } from '@/common/helpers/local-storage.helper.js'
+import { LocalStorage } from '@/common/helpers/local-storage'
 import { UserInfo } from '@/modules/users/user.constant.js'
 
 defineProps<{

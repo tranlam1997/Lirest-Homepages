@@ -10,7 +10,6 @@ const { t } = useI18n()
     dark:text-gray-100
   >
     <div
-
       i-carbon-language icon-btn
     />
   </a>
