@@ -1,16 +1,16 @@
 import axios from 'axios'
 import type { AxiosInstance } from 'axios'
-import type { IUserApi } from './user/user-api.interface'
-import type { IAuthApi } from './auth/auth-api.interface'
-import { AuthApi } from './auth/auth-api'
-import { UserApi } from './user/user-api'
-import { LocalStorage } from '@/common/helpers/local-storage.helper'
+import type { IUserApi as IUserApis } from './users/users.interface'
+import type { IAuthApi as IAuthApis } from './auth/auth.interface'
+import { AuthApis } from './auth/auth.api'
+import { UserApis } from './users/users.api'
+import { LocalStorage } from '@/common/helpers/local-storage'
 import { UserInfo } from '@/modules/users/user.constant'
 import { useAuthStore } from '@/modules/auth/auth.store'
 
 class Api {
-  private readonly auth: IAuthApi
-  private readonly user: IUserApi
+  private readonly authApis: IAuthApis
+  private readonly userApis: IUserApis
   private readonly axiosInstance: AxiosInstance
 
   constructor() {
@@ -53,16 +53,16 @@ class Api {
         return Promise.reject(error)
       },
     )
-    this.auth = AuthApi(this.axiosInstance)
-    this.user = UserApi(this.axiosInstance)
+    this.authApis = AuthApis(this.axiosInstance)
+    this.userApis = UserApis(this.axiosInstance)
   }
 
-  getAuth() {
-    return this.auth
+  getAuthApis() {
+    return this.authApis
   }
 
-  getUser() {
-    return this.user
+  getUserApis() {
+    return this.userApis
   }
 }
 
