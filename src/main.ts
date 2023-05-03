@@ -52,7 +52,7 @@ export const createApp = ViteSSG(
 
     installDirectives(ctx.app)
     ctx.app.component('font-awesome-icon', FontAwesomeIcon)
-    Object.values(import.meta.globEager('./plugins/*.ts')).forEach(i =>
+    Object.values(import.meta.glob('./plugins/*.ts', { eager: true })).forEach((i: any) =>
       i.install?.(ctx),
     )
   },
