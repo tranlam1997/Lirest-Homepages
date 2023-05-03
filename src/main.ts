@@ -6,8 +6,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 import App from './App.vue'
 import { checkAuth } from './middlewares/check-auth'
 import { checkGuest } from './middlewares/check-guest'
@@ -28,7 +28,8 @@ export const createApp = ViteSSG(
   App,
   { routes, base: import.meta.env.BASE_URL },
   (ctx) => {
-    ctx.app.use(Antd)
+    // use element plus component library
+    ctx.app.use(ElementPlus)
     ctx.router.beforeEach(
       (
         to: RouteLocationNormalized,

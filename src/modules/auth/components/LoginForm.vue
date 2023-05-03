@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useForm } from 'vee-validate'
 import type { Emitter } from 'mitt'
+import { vOnClickOutside } from '@vueuse/components'
 import { useAuthStore } from '../auth.store'
 import type { ILoginData } from '../auth.interface'
 import type { ToastMessageEvent } from '@/common/messages/toast-message/messages.enum'
@@ -15,15 +15,16 @@ const emit = defineEmits<{
 const router = useRouter()
 const authStore = useAuthStore()
 const inputType = ref('password')
+const isFocus = ref(false)
 const emitter = <Emitter<MittEvents>>inject('emitter')
 
 const loginSchema = {
-  email: 'required|email',
-  password: 'required|min:3',
+  username: 'required',
+  password: 'required',
 }
 
 const initialValues = {
-  email: '',
+  username: '',
   password: '',
 }
 
@@ -38,6 +39,14 @@ function isFilledOut() {
   )
 }
 
+function focusPassword() {
+  isFocus.value = true
+}
+
+function focusOutPassword() {
+  isFocus.value = false
+}
+
 emitter.on('changeInputType', (type: string) => {
   inputType.value = type
 })
@@ -45,7 +54,8 @@ emitter.on('changeInputType', (type: string) => {
 const onSubmit = handleSubmit(async (values) => {
   await authStore.login(
     {
-      email: values.email,
+      username: values.username,
+      email: values.username,
       password: values.password,
     },
     { emit, router },
@@ -55,7 +65,6 @@ const onSubmit = handleSubmit(async (values) => {
 
 <template>
   <form
-
     flex-col items-center text-dark dark:text-white
     @submit="onSubmit"
   >
@@ -68,27 +77,20 @@ const onSubmit = handleSubmit(async (values) => {
         flex-col
         justify-items-start
         class="ct-basis-45"
-        label-content="Email:"
-        label-name="email"
-        :error-detail="errors.email || ''"
+        label-content="Email / Username:"
+        label-name="username"
+        :error-detail="errors.username || ''"
       >
         <template #input>
           <InputText
-            input-name="email"
+            input-name="username"
             input-style="input-format"
           />
         </template>
       </RegisterInput>
     </div>
-    <a-button type="primary">
-      Primary Button
-    </a-button>
-    <a-button>Default Button</a-button>
-    <a-button type="dashed">
-      Dashed Button
-    </a-button>
-
     <div
+      v-on-click-outside="focusOutPassword"
       class="form-element"
       flex-col
     >
@@ -106,11 +108,12 @@ const onSubmit = handleSubmit(async (values) => {
             input-name="password"
             :input-type="inputType"
             input-style="input-format"
+            @input-change="focusPassword"
           />
         </template>
         <ContentToggler
-
-          absolute right-0 top-0 bg-white dark:bg-gray-800
+          absolute right-0 top-7 flex-row bg-dark dark:bg-gray-800
+          :is-focus="isFocus"
         />
       </RegisterInput>
     </div>
@@ -121,7 +124,6 @@ const onSubmit = handleSubmit(async (values) => {
       class="w-1/2"
     >
       <p
-
         self-center text-sm text-dark dark:text-white
       >
         Not a member yet?
