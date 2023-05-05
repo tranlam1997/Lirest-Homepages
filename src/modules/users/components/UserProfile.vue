@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const isUserFormRendered = ref(false)
+
+function showAvatar() {
+  isUserFormRendered.value = true
+}
+</script>
 
 <template>
   <div class="box">
@@ -7,8 +13,8 @@
       justify-between
       class="box-inner"
     >
-      <UserForm class="basis-3/4" />
-      <UserAvatar />
+      <UserForm class="basis-3/4" @get-data-success="showAvatar" />
+      <UserAvatar v-if="isUserFormRendered" />
     </div>
   </div>
 </template>

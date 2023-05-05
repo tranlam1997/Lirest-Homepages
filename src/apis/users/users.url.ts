@@ -1,5 +1,5 @@
 export const UserApiUrl = {
-  baseUrl: '/users',
+  baseUrl: '/api/v1/users',
   getUserById(id: string) {
     return `${this.baseUrl}/${id}`
   },

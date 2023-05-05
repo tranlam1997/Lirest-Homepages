@@ -1,5 +1,5 @@
 export const AuthApiUrl = {
-  baseUrl: '/auth',
-  login: '/auth/login',
-  refreshToken: '/auth/refresh-token',
+  baseUrl: '/api/v1/iam',
+  login: 'api/v1/iam/auth/login',
+  refreshToken: 'api/v1/iam/auth/refresh-token',
 }

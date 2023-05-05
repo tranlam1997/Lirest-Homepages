@@ -4,6 +4,10 @@ import { useUserStore } from '../user.store'
 
 import type { MittEvents } from '@/plugins/mitt'
 
+const emit = defineEmits<{
+  (e: 'getDataSuccess'): void
+}>()
+
 const userData = ref()
 const route = useRoute()
 const userStore = useUserStore()
@@ -25,6 +29,10 @@ onBeforeMount(() => {
     })
   }
 })
+
+onMounted(() => {
+  emit('getDataSuccess')
+})
 </script>
 
 <template>
@@ -36,7 +44,7 @@ onBeforeMount(() => {
     <UserInput
       label-name="firstname"
       label-content="First Name:"
-      :value="userData.firstname"
+      :value="userData.data.firstName"
     >
       <InputText
         input-name="firstname"
@@ -46,7 +54,7 @@ onBeforeMount(() => {
     <UserInput
       label-name="lastname"
       label-content="Last Name:"
-      :value="userData.lastname"
+      :value="userData.data.lastName"
     >
       <InputText
         input-name="lastname"
@@ -56,7 +64,7 @@ onBeforeMount(() => {
     <UserInput
       label-name="dateOfBirth"
       label-content="Date Of Birth:"
-      :value="userData.dateOfBirth"
+      :value="userData.data.dateOfBirth"
     >
       <InputText
         input-name="dateOfBirth"
@@ -66,7 +74,7 @@ onBeforeMount(() => {
     <UserInput
       label-name="phoneNumber"
       label-content="Phone Number:"
-      :value="userData.phoneNumber"
+      :value="userData.data.phoneNumber"
     >
       <InputText
         input-name="phoneNumber"
@@ -76,7 +84,7 @@ onBeforeMount(() => {
     <UserInput
       label-name="email"
       label-content="Email:"
-      :value="userData.email"
+      :value="userData.data.email"
     >
       <InputText
         input-name="email"
@@ -86,7 +94,7 @@ onBeforeMount(() => {
     <UserInput
       label-name="username"
       label-content="Username:"
-      :value="userData.username"
+      :value="userData.data.username"
     >
       <InputText
         input-name="username"
