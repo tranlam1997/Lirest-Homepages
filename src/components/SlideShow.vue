@@ -2,9 +2,9 @@
 import type { Ref } from 'Vue'
 
 const images: Ref<string[]> = ref([
-  'https://csecenglishmadeeasy.com/wp-content/uploads/2017/11/library-wallpaper-50371-52062-hd-wallpapers.jpg',
-  'https://images.wallpaperscraft.com/image/single/books_shelf_collection_119979_1920x1080.jpg',
-  'https://images.wallpaperscraft.com/image/single/books_old_reading_124989_1920x1080.jpg',
+  'https://mcusercontent.com/11e58e93be501c9a074b44232/images/57f1a717-363c-f95e-01bf-59525a53fc8b.jpg',
+  'https://mcusercontent.com/11e58e93be501c9a074b44232/images/50653849-d1c1-5efb-5639-cfef3ea66ca5.jpg',
+  'https://mcusercontent.com/11e58e93be501c9a074b44232/images/cfccdc62-5b9c-ccc2-9cd7-faac569cd834.jpg',
 ])
 const slideImages = [
   images.value[images.value.length - 1],

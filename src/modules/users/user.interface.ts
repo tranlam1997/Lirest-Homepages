@@ -17,13 +17,3 @@ export interface IUserModel {
     updatedAt: string
   }
 }
-
-export interface ICreateUserDto {
-  firstname: string
-  lastname: string
-  dateOfBirth: string
-  email: string
-  phoneNumber: string
-  username: string
-  password: string
-}

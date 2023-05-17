@@ -1,5 +1,4 @@
-import type { IUtilities } from '../auth/auth.interface'
-import type { ICreateUserDto, IUserModel } from './user.interface'
+import type { IUserModel } from './user.interface'
 import userService from './user.service'
 
 export const useUserStore = defineStore('userId', {
@@ -10,9 +9,6 @@ export const useUserStore = defineStore('userId', {
   },
 
   actions: {
-    async createUser(data: ICreateUserDto, utilities: IUtilities) {
-      return userService.createUser(data, utilities)
-    },
     async getUserById(id: string) {
       return userService.getUserById(id)
     },

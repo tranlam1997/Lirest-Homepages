@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <NavBarSticky top-50 sticky nav-style="w-1/5 flex-col items-end absolute right-20" />
+  <NavBarSticky top-50 sticky nav-style="w-1/5 flex-col items-end absolute right-50"/>
   <TheHeader />
   <nav flex-row class="middle">
     <NavBarMain />

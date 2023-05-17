@@ -1,4 +1,4 @@
-import type { ILoginData, IUtilities } from './auth.interface'
+import type { ILoginPayload, IRegisterPayload, IUtilities } from './auth.interface'
 import authService from './auth.service'
 
 export const useAuthStore = defineStore('authId', {
@@ -9,8 +9,12 @@ export const useAuthStore = defineStore('authId', {
   getters: {},
 
   actions: {
-    async login(data: ILoginData, options: IUtilities) {
+    async login(data: ILoginPayload, options: IUtilities) {
       return authService.login(data, options)
+    },
+
+    async register(payload: IRegisterPayload, utilities: IUtilities) {
+      return authService.register(payload, utilities)
     },
 
     async refreshToken(refreshToken: string) {

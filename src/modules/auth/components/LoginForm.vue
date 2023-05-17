@@ -2,7 +2,7 @@
 import type { Emitter } from 'mitt'
 import { vOnClickOutside } from '@vueuse/components'
 import { useAuthStore } from '../auth.store'
-import type { ILoginData } from '../auth.interface'
+import type { ILoginPayload } from '../auth.interface'
 import type { ToastMessageEvent } from '@/common/messages/toast-message/messages.enum'
 import type { MittEvents } from '@/plugins/mitt'
 
@@ -28,7 +28,7 @@ const initialValues = {
   password: '',
 }
 
-const { handleSubmit, values, errors } = useForm<ILoginData>({
+const { handleSubmit, values, errors } = useForm<ILoginPayload>({
   validationSchema: loginSchema,
   initialValues,
 })

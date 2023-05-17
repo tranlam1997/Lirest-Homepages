@@ -1,6 +1,6 @@
 import type { AxiosInstance } from 'axios'
 import { AxiosError } from 'axios'
-import type { ILoginResponseData } from '../../modules/auth/auth.interface'
+import type { ILoginResponseData, IRegisterPayload } from '../../modules/auth/auth.interface'
 import { AuthApiUrl } from './auth.url'
 import type { IAxiosResponse, IResultResponse } from '@/shared/interfaces/axios-response'
 import { ErrorReponse } from '@/shared/error-response'
@@ -11,6 +11,19 @@ export function AuthApis(axios: AxiosInstance) {
     Promise<IAxiosResponse<{}> | IAxiosResponse<ILoginResponseData> | IResultResponse<{}>> {
       try {
         const result = await axios.post(AuthApiUrl.login, data)
+        return result
+      }
+      catch (err) {
+        if (err instanceof AxiosError)
+          return err.response as IAxiosResponse<{}>
+
+        return ErrorReponse(JSON.stringify(err))
+      }
+    },
+
+    async register(payload: IRegisterPayload) {
+      try {
+        const result = await axios.post(AuthApiUrl.register, payload)
         return result
       }
       catch (err) {

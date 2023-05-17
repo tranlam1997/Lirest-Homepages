@@ -2,7 +2,7 @@
 import { useForm } from 'vee-validate'
 import type { Emitter } from 'mitt'
 import type { IRegisterForm } from '../auth.interface'
-import { useUserStore } from '@/modules/users/user.store'
+import { useAuthStore } from '../auth.store'
 import type { ToastMessageEvent } from '@/common/messages/toast-message/messages.enum'
 import type { MittEvents } from '@/plugins/mitt'
 
@@ -16,11 +16,11 @@ const inputType = ref('password')
 const isFocus = ref(false)
 const emitter = <Emitter<MittEvents>>inject('emitter')
 const router = useRouter()
-const userStore = useUserStore()
+const authStore = useAuthStore()
 
 const initialValues = {
-  firstname: '',
-  lastname: '',
+  firstName: '',
+  lastName: '',
   dateOfBirth: '',
   email: '',
   phoneNumber: '',
@@ -30,8 +30,8 @@ const initialValues = {
 }
 
 const registerSchema = {
-  firstname: 'required|min:3|max:20|name',
-  lastname: 'required|min:3|max:20|name',
+  firstName: 'required|min:3|max:20|name',
+  lastName: 'required|min:3|max:20|name',
   dateOfBirth: 'required',
   email: 'required|email',
   phoneNumber: 'required|phone',
@@ -65,7 +65,7 @@ emitter.on('changeInputType', (type: string) => {
 
 const onSubmit = handleSubmit(async (values) => {
   delete values.confirmPassword
-  await userStore.createUser({ ...values }, { emit, router })
+  await authStore.register({ ...values }, { emit, router })
 })
 </script>
 
@@ -85,12 +85,12 @@ const onSubmit = handleSubmit(async (values) => {
         justify-items-start
         class="ct-basis-45"
         label-content="First Name:"
-        label-name="firstname"
-        :error-detail="errors.firstname || ''"
+        label-name="firstName"
+        :error-detail="errors.firstName || ''"
       >
         <template #input>
           <InputText
-            input-name="firstname"
+            input-name="firstName"
             input-style="input-format"
           />
         </template>
@@ -101,12 +101,12 @@ const onSubmit = handleSubmit(async (values) => {
         justify-items-start
         class="ct-basis-45"
         label-content="Last Name:"
-        label-name="lastname"
-        :error-detail="errors.lastname || ''"
+        label-name="lastName"
+        :error-detail="errors.lastName || ''"
       >
         <template #input>
           <InputText
-            input-name="lastname"
+            input-name="lastName"
             input-style="input-format"
           />
         </template>
@@ -242,7 +242,6 @@ const onSubmit = handleSubmit(async (values) => {
       class="w-1/2"
     >
       <p
-
         self-center text-sm text-dark dark:text-white
       >
         Already a member?
